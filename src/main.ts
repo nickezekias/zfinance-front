@@ -1,4 +1,5 @@
-import './assets/main.css'
+import './assets/css/main.css'
+import '@/assets/css/tailwind.css'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
@@ -11,6 +12,8 @@ import router from './router'
 import i18n from './locales/i18n'
 
 import Button from 'primevue/button'
+import InputText from 'primevue/inputtext'
+import ToastService from "primevue/toastservice";
 
 const app = createApp(App, {
   setup() {
@@ -36,7 +39,9 @@ app.use(PrimeVue, {
     }
   }
 })
+app.use(ToastService);
 
 app.component('PrimeButton', Button)
+app.component('PrimeInputText', InputText)
 
 app.mount('#app')

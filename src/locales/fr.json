@@ -1,3 +1,5 @@
 {
-  "hello": "Bonjour"
+  "labels": {
+    "login": "Se Connecter"
+  }
 }

@@ -1,0 +1,11 @@
+.dbg-border {
+  border: 1px solid red !important;
+}
+
+.main {
+  height: 100vh;
+}
+
+.page-container {
+  min-height: 100%;
+}
