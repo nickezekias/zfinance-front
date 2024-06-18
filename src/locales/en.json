@@ -1,6 +1,14 @@
 {
+  "errors": {
+    "invalid": {
+      "email": "E-mail must be valid"
+    },
+    "requiredField": "This field is required"
+  },
   "labels": {
-    "login": "Sign In"
+    "email": "Email",
+    "login": "Sign In",
+    "password": "Password"
   },
   "features": {
     "login": {
