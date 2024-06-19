@@ -3,8 +3,8 @@ import NikInputText from '@/components/forms/NikInputText.vue'
 </script>
 
 <template>
-  <form class="mt-8">
-    <div class="field dbg-border">
+  <form>
+    <div class="field mt-10">
       <NikInputText
         errorHelpLabel="errors.invalid.email"
         id="email"
@@ -14,7 +14,7 @@ import NikInputText from '@/components/forms/NikInputText.vue'
       />
     </div>
 
-    <div class="field mt-16 border-1 border-solid border-primary-500">
+    <div class="field mt-8">
       <NikInputText
         errorHelpLabel="errors.requiredField"
         id="password"
@@ -23,8 +23,10 @@ import NikInputText from '@/components/forms/NikInputText.vue'
         type="password"
       />
     </div>
-    <div class="field mt-8">
-      <PrimeInputText type="text" />
+
+    <div class="actions mt-8">
+      <PrimeButton class="w-full p-3 bg-primary text-white" :label="$t('labels.login')"/>
+      <PrimeButton text plain class="w-full p-3 text-primary mt-3" :label="$t('features.login.createNewAccount')"/>
     </div>
   </form>
 </template>

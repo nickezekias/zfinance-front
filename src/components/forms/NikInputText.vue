@@ -10,10 +10,10 @@ const props = defineProps<{
 </script>
 
 <template>
-  <PrimeFloatLabel class="border-1 border-solid border-primary">
+  <PrimeFloatLabel>
     <PrimeInputText
       v-model="model"
-      class="w-full py-2 border-1 border-solid border-surface-100 focus:border-primary"
+      class="w-full p-3 border shadow-none"
       :class="props.isError ? 'p-invalid' : ''"
       :id="props.id"
       :type="type"
@@ -24,3 +24,9 @@ const props = defineProps<{
     </small>
   </PrimeFloatLabel>
 </template>
+
+<style scoped>
+.p-inputtext:focus {
+  border-color: var(--p-primary-color)
+}
+</style>

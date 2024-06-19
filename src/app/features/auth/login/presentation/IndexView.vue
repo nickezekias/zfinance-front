@@ -3,19 +3,19 @@ import LoginForm from '@/app/features/auth/components/LoginForm.vue';
 </script>
 
 <template>
-  <div class="flex flex-row page-container">
+  <div class="flex flex-row h-screen">
     <section id="artwork" class="basis-full md:basis-1/2">
       <div id="artwork-overlay"></div>
     </section>
 
-    <section class="basis-full md:basis-1/2 md:p-12">
+    <section class="basis-full md:basis-1/2 md:p-24">
       <h1 class="text-right text-3xl md:text-5xl font-black">FINAPP</h1>
 
       <div class="mt-24 font-thin">
         <h2 class="text-2xl md:text-4xl uppercase">{{ $t('labels.login') }}</h2>
         <p class="text-secondary">{{ $t('features.login.pageDescription') }}</p>
 
-        <LoginForm class="mt-2"/>
+        <LoginForm class="mt-2" />
       </div>
     </section>
   </div>

@@ -15,7 +15,6 @@ import Button from 'primevue/button'
 import FloatLabel from 'primevue/floatlabel'
 import InputText from 'primevue/inputtext'
 import ToastService from 'primevue/toastservice'
-import { definePreset } from '@primevue/themes'
 
 const app = createApp(App, {
   setup() {
@@ -24,29 +23,12 @@ const app = createApp(App, {
   }
 })
 
-const MyPreset = definePreset(Aura, {
-  semantic: {
-    focusRing: {
-      width: '2px',
-      style: 'dashed',
-      color: '{primary.color}',
-      offset: '1px'
-    }
-  },
-  options: {
-    cssLayer: {
-      name: 'primevue',
-      order: 'tailwind-base, primevue, tailwind-utilities'
-    }
-  }
-})
-
 app.use(createPinia())
 app.use(router)
 app.use(i18n)
 app.use(PrimeVue, {
   ripple: true,
-  /* theme: {
+  theme: {
     preset: Aura,
     options: {
       prefix: 'p',
@@ -56,8 +38,8 @@ app.use(PrimeVue, {
         order: 'tailwind-base, primevue, tailwind-utilities'
       }
     }
-  } */
-  theme: MyPreset
+  }
+  // theme: MyPreset
 })
 app.use(ToastService)
 
