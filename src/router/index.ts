@@ -10,6 +10,11 @@ const router = createRouter({
       redirect: { name: 'login' },
       children: [
         {
+          path: 'forgot-password',
+          name: 'forgotPassword',
+          component: () => import ('@/app/features/auth/ForgotPasswordView.vue')
+        },
+        {
           path: 'login',
           name: 'login',
           component: () => import('@/app/features/auth/login/presentation/IndexView.vue')

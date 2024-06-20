@@ -6,6 +6,7 @@ import { createPinia } from 'pinia'
 import { useI18n } from 'vue-i18n'
 import PrimeVue from 'primevue/config'
 import Aura from '@primevue/themes/aura'
+import 'primeicons/primeicons.css'
 
 import App from './App.vue'
 import router from './router'
@@ -14,6 +15,7 @@ import i18n from './locales/i18n'
 import Button from 'primevue/button'
 import FloatLabel from 'primevue/floatlabel'
 import InputText from 'primevue/inputtext'
+import Message from 'primevue/message'
 import ToastService from 'primevue/toastservice'
 
 const app = createApp(App, {
@@ -46,5 +48,6 @@ app.use(ToastService)
 app.component('PrimeButton', Button)
 app.component('PrimeFloatLabel', FloatLabel)
 app.component('PrimeInputText', InputText)
+app.component('PrimeMessage', Message)
 
 app.mount('#app')

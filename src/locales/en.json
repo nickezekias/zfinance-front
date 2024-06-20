@@ -9,14 +9,19 @@
     "confirmPassword": "Confirm password",
     "email": "Email",
     "firstName": "First name",
-    "forgotPassword": "Forgot your password?",
+    "forgotPassword": "Forgot password?",
     "lastName": "Last name",
     "login": "Sign In",
     "password": "Password",
     "register": "Sign Up",
+    "resetPassword": "Reset password",
     "tel": "Phone number"
   },
   "features": {
+    "forgotPassword": {
+      "checkAccountExistsMessage": "If an account with this email is found, you will receive a link on your email to reset your password.",
+      "pageDescription": "It happens to the best of us, get a password reset link"
+    },
     "login": {
       "createNewAccount": "Don't have an account? Sign Up",
       "pageDescription": "Sign in to manage your credit cards"
