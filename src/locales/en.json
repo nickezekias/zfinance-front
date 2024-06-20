@@ -6,15 +6,24 @@
     "requiredField": "This field is required"
   },
   "labels": {
+    "confirmPassword": "Confirm password",
     "email": "Email",
+    "firstName": "First name",
     "forgotPassword": "Forgot your password?",
+    "lastName": "Last name",
     "login": "Sign In",
-    "password": "Password"
+    "password": "Password",
+    "register": "Sign Up",
+    "tel": "Phone number"
   },
   "features": {
     "login": {
       "createNewAccount": "Don't have an account? Sign Up",
       "pageDescription": "Sign in to manage your credit cards"
+    },
+    "register": {
+      "loginExistingAccount": "I already have an account",
+      "pageDescription": "Sign up to manage your credit cards"
     }
   }
 }
