@@ -7,6 +7,7 @@
   },
   "labels": {
     "email": "Email",
+    "forgotPassword": "Forgot your password?",
     "login": "Sign In",
     "password": "Password"
   },

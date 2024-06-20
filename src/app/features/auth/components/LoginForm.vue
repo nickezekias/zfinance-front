@@ -23,6 +23,9 @@ import NikInputText from '@/components/forms/NikInputText.vue'
         type="password"
       />
     </div>
+    <div class="flex">
+      <PrimeButton class="ml-auto mt-1 py-1 px-2 text-red-500" :label="$t('labels.forgotPassword')"/>
+    </div>
 
     <div class="actions mt-8">
       <PrimeButton class="w-full p-3 bg-primary text-white" :label="$t('labels.login')"/>
