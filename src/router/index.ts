@@ -7,21 +7,21 @@ const router = createRouter({
     {
       path: '/',
       component: GuestLayout,
-      redirect: { name: 'login' },
+      redirect: { name: 'auth.login' },
       children: [
         {
           path: 'forgot-password',
-          name: 'forgotPassword',
+          name: 'auth.forgotPassword',
           component: () => import ('@/app/features/auth/ForgotPasswordView.vue')
         },
         {
           path: 'login',
-          name: 'login',
+          name: 'auth.login',
           component: () => import('@/app/features/auth/login/presentation/IndexView.vue')
         },
         {
           path: 'register',
-          name: 'register',
+          name: 'auth.register',
           component: () => import('@/app/features/auth/register/presentation/IndexView.vue')
         }
       ]
