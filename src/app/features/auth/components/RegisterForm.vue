@@ -66,7 +66,9 @@ import NikInputText from '@/components/forms/NikInputText.vue'
 
     <div class="actions mt-8">
       <PrimeButton class="w-full p-3 bg-primary text-white" :label="$t('labels.register')"/>
-      <PrimeButton text plain class="w-full p-3 text-primary mt-3" :label="$t('features.register.loginExistingAccount')"/>
+      <router-link class="ml-auto" :to="{ name: 'auth.login' }">
+        <PrimeButton text plain class="w-full p-3 text-primary mt-3" :label="$t('features.register.loginExistingAccount')"/>
+      </router-link>
     </div>
   </form>
 </template>
