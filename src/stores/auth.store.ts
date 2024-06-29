@@ -16,7 +16,7 @@ export const useAuthStore = defineStore('auth', () => {
   async function login(payload: LoginRequest) {
     const response = await authService.login(payload)
     console.log("LOGIN_RESPONSE", response)
-    await getAuthenticatedUser()
+    // await getAuthenticatedUser()
   }
 
   async function logout() {

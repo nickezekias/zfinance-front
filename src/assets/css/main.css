@@ -13,6 +13,10 @@
   color: var(--p-primary-color);
 }
 
+.nikk-invalid {
+  color: var(--p-red-500)
+}
+
 .main {
   height: 100vh;
 }
