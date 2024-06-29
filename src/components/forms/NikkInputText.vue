@@ -14,12 +14,12 @@ const props = defineProps<{
     <PrimeInputText
       v-model="model"
       class="w-full p-3 border shadow-none"
-      :class="props.isError ? 'p-invalid' : ''"
+      :invalid="props.isError"
       :id="props.id"
       :type="type"
     />
-    <label :for="props.id">{{ $t(`${props.label}`) }}</label>
-    <small v-if="props.isError" :id="`${props.id}-help`" class="p-error">
+    <label :class="props.isError ? 'nikk-invalid' : ''" :for="props.id">{{ $t(`${props.label}`) }}</label>
+    <small v-if="props.isError" :id="`${props.id}-help`" class="nikk-invalid">
       {{ $t(`${props.errorHelpLabel}`) }}
     </small>
   </PrimeFloatLabel>
@@ -29,4 +29,8 @@ const props = defineProps<{
 .p-inputtext:focus {
   border-color: var(--p-primary-color)
 }
+.p-inputtext.p-invalid {
+  border-color: var(--p-red-500)
+}
+
 </style>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import NikInputText from '@/components/forms/NikInputText.vue';
+import NikInputText from '@/components/forms/NikkInputText.vue';
 </script>
 
 <template>
