@@ -8,7 +8,7 @@ import { useVuelidate } from "@vuelidate/core";
 
 import type { AxiosError } from 'axios';
 
-import NikInputText from '@/components/forms/NikkInputText.vue'
+import NikkInputText from '@/components/forms/NikkInputText.vue'
 import { getApiErrors } from '@/app/utils/helpers';
 import type { LoginRequest } from '@/@types/auth.interface';
 
@@ -56,12 +56,12 @@ async function submit(): Promise<void> {
 <template>
   <form @submit.prevent="submit">
     <div class="field mt-10">
-      <NikInputText v-model="state.email" errorHelpLabel="errors.invalid.email" id="email" :isError="v$.email.$error"
+      <NikkInputText v-model="state.email" errorHelpLabel="errors.validation.email" id="email" :isError="v$.email.$error"
         label="labels.email" type="email" />
     </div>
 
     <div class="field mt-8">
-      <NikInputText v-model="state.password" errorHelpLabel="errors.requiredField" id="password" :isError="v$.password.error"
+      <NikkInputText v-model="state.password" errorHelpLabel="errors.validation.requiredField" id="password" :isError="v$.password.error"
         label="labels.password" type="password" />
     </div>
     <div class="flex">

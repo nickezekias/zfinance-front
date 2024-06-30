@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import NikInputText from '@/components/forms/NikkInputText.vue';
+import NikkInputText from '@/components/forms/NikkInputText.vue';
 </script>
 
 <template>
@@ -17,7 +17,7 @@ import NikInputText from '@/components/forms/NikkInputText.vue';
 
         <form class="mt-2">
           <div class="field mt-10">
-            <NikInputText errorHelpLabel="errors.invalid.email" id="email" :isError="false" label="labels.email"
+            <NikkInputText errorHelpLabel="errors.validation.email" id="email" :isError="false" label="labels.email"
               type="email" />
             <PrimeMessage class="mt-3" icon="pi pi-info-circle">{{ $t('features.forgotPassword.checkAccountExistsMessage') }}
             </PrimeMessage>

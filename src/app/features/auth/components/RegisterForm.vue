@@ -12,7 +12,7 @@ import type { AxiosError } from 'axios';
 import type { Ref } from 'vue';
 import type { RegisterRequest } from '@/@types/auth.interface';
 
-import NikInputText from '@/components/forms/NikkInputText.vue'
+import NikkInputText from '@/components/forms/NikkInputText.vue'
 import { MIN_PWD_LENGTH } from '@/app/config';
 
 const authStore = useAuthStore()
@@ -87,7 +87,7 @@ async function submit(): Promise<void> {
 <template>
   <form @submit.prevent="submit">
     <div class="field mt-10">
-      <NikInputText
+      <NikkInputText
         v-model="state.lastName"
         errorHelpLabel="errors.validation.requiredField"
         id="last-name"
@@ -98,7 +98,7 @@ async function submit(): Promise<void> {
     </div>
 
     <div class="field mt-10">
-      <NikInputText
+      <NikkInputText
         v-model="state.firstName"
         errorHelpLabel="errors.validation.requiredField"
         id="first-name"
@@ -109,7 +109,7 @@ async function submit(): Promise<void> {
     </div>
 
     <div class="field mt-10">
-      <NikInputText
+      <NikkInputText
         v-model="state.email"
         errorHelpLabel="errors.validation.email"
         id="email"
@@ -120,7 +120,7 @@ async function submit(): Promise<void> {
     </div>
 
     <div class="field mt-10">
-      <NikInputText
+      <NikkInputText
         v-model="state.phone"
         errorHelpLabel="errors.validation.requiredField"
         id="phone"
@@ -131,7 +131,7 @@ async function submit(): Promise<void> {
     </div>
 
     <div class="field mt-8">
-      <NikInputText
+      <NikkInputText
         v-model="state.password"
         errorHelpLabel="errors.validation.passwords.minCount"
         id="password"
@@ -142,7 +142,7 @@ async function submit(): Promise<void> {
     </div>
 
     <div class="field mt-8">
-      <NikInputText
+      <NikkInputText
         v-model="state.passwordConfirmation"
         errorHelpLabel="errors.validation.passwords.notSame"
         id="password-confirmation"
