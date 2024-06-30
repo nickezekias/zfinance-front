@@ -3,14 +3,24 @@ import { useAuthStore } from '@/stores/auth.store'
 export default async function auth({ to, next }: any) {
   const authStore = useAuthStore()
   const loginQuery = { path: '/login', query: { redirect: to.fullPath } }
-  if (!authStore.user) {
-    await authStore.getAuthenticatedUser()
-    if (!authStore.user) {
-      next(loginQuery)
-    } else {
-      next()
-    }
+  if (authStore.isGuest()) {
+    authStore.clearAuthenticatedUser()
+    next(loginQuery)
   } else {
-    next()
+    if (authStore.user) {
+      next()
+    } else {
+      try {
+        await authStore.getAuthenticatedUser()
+      } catch(e) {
+        console.error(e)
+      }
+      if (authStore.user) {
+        next()
+      } else {
+        next(loginQuery)
+      }
+    }
   }
+
 }
