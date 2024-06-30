@@ -4,28 +4,64 @@ import { defineStore } from 'pinia'
 import type { LoginRequest, PasswordResetRequest, RegisterRequest } from '@/@types/auth.interface'
 import type { Ref } from 'vue'
 import type User from '@/app/domain/user.model'
+import { useRouter } from 'vue-router'
 
 export const useAuthStore = defineStore('auth', () => {
   const user: Ref<User | null> = ref(null)
 
+  const clearAuthenticatedUser = (): void => {
+    setUser(null)
+    setIsGuest('1')
+  }
+
+  const isAdmin = (): boolean => {
+    return user.value != null && user.value.isAdmin
+  }
+
+  const isGuest = (): boolean => {
+    if (window.localStorage.getItem('guest') === '1') {
+      return true
+    } else {
+      return false
+    }
+  }
+
+  const setAuthenticatedUser = (data: User): void => {
+    setUser(data)
+    setIsGuest('0')
+  }
+
+  const setIsGuest = (value: string): void => {
+    window.localStorage.setItem('guest', value)
+  }
+
+  const setUser = (data: User | null): void => {
+    user.value = data
+  }
+
   async function getAuthenticatedUser() {
     const response = await authService.getAuthenticatedUser()
-    user.value = response.data as User
+    setAuthenticatedUser(response.data as User)
   }
 
   async function login(payload: LoginRequest) {
     const response = await authService.login(payload)
-    console.log("LOGIN_RESPONSE", response)
-    // await getAuthenticatedUser()
+    console.log('LOGIN_RESPONSE', response)
+    await getAuthenticatedUser()
   }
 
   async function logout() {
+    const router = useRouter()
     await authService.logout()
+    clearAuthenticatedUser()
+    if (router.currentRoute.value.name != 'auth.login') {
+      router.push({ name: 'auth.login' })
+    }
   }
 
   async function register(payload: RegisterRequest) {
     const response = await authService.register(payload)
-    return response.data
+    setAuthenticatedUser(response.data as User)
   }
 
   async function resetPassword(payload: PasswordResetRequest) {
@@ -38,5 +74,18 @@ export const useAuthStore = defineStore('auth', () => {
     return response.data
   }
 
-  return { login, logout, register, resetPassword, sendPasswordResetLink }
+  return {
+    clearAuthenticatedUser,
+    getAuthenticatedUser,
+    isAdmin,
+    isGuest,
+    login,
+    logout,
+    register,
+    resetPassword,
+    sendPasswordResetLink,
+    setIsGuest,
+    setUser,
+    user
+  }
 })
