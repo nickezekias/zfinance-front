@@ -8,6 +8,7 @@ export default class User {
   IDDocument: string | null
   IDDocumentVerifiedAt: string | null
   isActive: boolean
+  isAdmin: boolean
   lastName: string
   phone: string
   phoneVerifiedAt: string | null
@@ -23,6 +24,7 @@ export default class User {
     IDDocument: string | null,
     IDDocumentVerifiedAt: string | null,
     isActive: boolean,
+    isAdmin: boolean,
     lastName: string,
     phone: string,
     phoneVerifiedAt: string,
@@ -38,6 +40,7 @@ export default class User {
     this.IDDocument = IDDocument
     this.IDDocumentVerifiedAt = IDDocumentVerifiedAt
     this.isActive = isActive
+    this.isAdmin = isAdmin
     this.lastName = lastName
     this.phone = phone
     this.phoneVerifiedAt = phoneVerifiedAt
