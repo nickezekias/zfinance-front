@@ -17,10 +17,10 @@ interface PasswordResetRequest {
 
 interface RegisterRequest {
   email: string
-  firstName: string
-  lastName: string
+  first_name: string
+  last_name: string
   password: string
-  passwordConfirmation: string
+  password_confirmation: string
   phone: string
 }
 
