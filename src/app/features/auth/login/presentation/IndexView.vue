@@ -8,7 +8,7 @@ import LoginForm from '@/app/features/auth/components/LoginForm.vue';
       <div id="artwork-overlay"></div>
     </section>
 
-    <section class="basis-full md:basis-1/2 md:p-24">
+    <section class="basis-full md:basis-1/2 md:p-24 overflow-y-auto">
       <h1 class="text-right text-3xl md:text-5xl font-black">FINAPP</h1>
 
       <div class="mt-24 font-thin">
