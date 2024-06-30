@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive, ref } from 'vue'
+import { computed, reactive, ref } from 'vue'
 import { email, required } from "@vuelidate/validators";
 import { useAuthStore } from '@/stores/auth.store';
 import { useI18n } from 'vue-i18n';
@@ -14,14 +14,17 @@ import type { LoginRequest } from '@/@types/auth.interface';
 
 const authStore = useAuthStore()
 const loading = ref(false)
-const rules = {
-  email: { required, email },
-  password: { required },
-};
+
 const state: LoginRequest = reactive({
   email: '',
   password: ''
 })
+
+const rules = computed(() => ({
+  email: { required, email },
+  password: { required }
+}))
+
 const { t } = useI18n()
 const toast = useToast()
 const v$ = useVuelidate(rules, state, { $autoDirty: true });
@@ -61,12 +64,12 @@ async function submit(): Promise<void> {
     </div>
 
     <div class="field mt-8">
-      <NikkInputText v-model="state.password" errorHelpLabel="errors.validation.requiredField" id="password" :isError="v$.password.error"
+      <NikkInputText v-model="state.password" errorHelpLabel="errors.validation.requiredField" id="password" :isError="v$.password.$error"
         label="labels.password" type="password" />
     </div>
     <div class="flex">
       <router-link class="ml-auto" :to="{ name: 'auth.forgotPassword' }">
-        <PrimeButton class="ml-auto mt-1 py-1 px-2 text-red-500" :label="$t('labels.forgotPassword')" />
+        <PrimeButton text plain class="ml-auto mt-1 py-1 px-2 text-red-500" :label="$t('labels.forgotPassword')" />
       </router-link>
     </div>
 
