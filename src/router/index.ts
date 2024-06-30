@@ -51,7 +51,6 @@ const router = createRouter({
 router.beforeEach(async (to, from, next) => {
   const middleware: Array<Function> = to.meta.middleware as Array<Function>;
   const context = { to, from, next };
-  console.warn("middleware", middleware)
 
   if (!middleware) {
     return next();
