@@ -10,7 +10,10 @@
     }
   },
   "labels": {
+    "cheque": "Cheque | Cheques",
     "confirmPassword": "Confirm password",
+    "creditCard": "Credit Card | Credit Cards",
+    "dashboard": "Dashboard",
     "email": "Email",
     "firstName": "First name",
     "forgotPassword": "Forgot password?",
@@ -23,7 +26,8 @@
     "phone": "Phone number",
     "register": "Sign Up",
     "registerFailed": "Failed to sign up",
-    "resetPassword": "Reset password"
+    "resetPassword": "Reset password",
+    "transaction": "Transaction | Transactions"
   },
   "features": {
     "forgotPassword": {

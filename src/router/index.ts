@@ -35,7 +35,7 @@ const router = createRouter({
     },
     {
       path: '/',
-      component: GuestLayout,
+      component: () => import('@/layouts/AppLayout.vue'),
       children: [
         {
           path: '/dashboard',
