@@ -3,6 +3,7 @@ import { computed, reactive, ref } from 'vue'
 import { email, required } from "@vuelidate/validators";
 import { useAuthStore } from '@/stores/auth.store';
 import { useI18n } from 'vue-i18n';
+import { useRouter } from 'vue-router';
 import { useToast } from 'primevue/usetoast';
 import { useVuelidate } from "@vuelidate/core";
 
@@ -14,6 +15,7 @@ import type { LoginRequest } from '@/@types/auth.interface';
 
 const authStore = useAuthStore()
 const loading = ref(false)
+const router = useRouter()
 
 const state: LoginRequest = reactive({
   email: '',
@@ -27,14 +29,15 @@ const rules = computed(() => ({
 
 const { t } = useI18n()
 const toast = useToast()
-const v$ = useVuelidate(rules, state, { $autoDirty: true });
+const v$ = useVuelidate(rules, state, { $autoDirty: true })
 
 async function submit(): Promise<void> {
   loading.value = true
   try {
-    const isFormCorrect = await v$.value.$validate();
+    const isFormCorrect = await v$.value.$validate()
     if (isFormCorrect) {
-      await authStore.login(state);
+      await authStore.login(state)
+      router.push({ name: 'dashboard' })
     } else {
       toast.add({
         severity: "error",
