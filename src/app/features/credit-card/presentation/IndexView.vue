@@ -26,14 +26,14 @@ const breadcrumbItems: Ref<Array<Record<string, string>>> = ref([{ label: t('lab
 
     <div class="pt-6">
       <div class="flex-row md:flex">
-        <div class="flex flex-col gap-3 basis-12/12 md:basis-0">
+        <div class="flex flex-col gap-3 items-center">
           <CreditCard :isActive="true" />
           <CreditCard />
         </div>
         <div class="grow flex-row md:flex mt-8 md:mt-0">
           <PrimeDivider class="md:hidden" />
           <PrimeDivider class="hidden md:flex" layout="vertical" />
-          <div class="grow pb-6">
+          <div class="grow pb-4">
             <h3 class="text-xl font-thin text-gray-400 mt-4 md:mt-0">{{ $t('labels.cardInformation') }}</h3>
             <CreditCardForm :readonly="true" class="mt-8"/>
           </div>
