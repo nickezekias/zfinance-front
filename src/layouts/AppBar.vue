@@ -10,19 +10,19 @@ import PrimeToolbar from 'primevue/toolbar'
     </template>
 
     <template #center>
-      <router-link :to="{ name: 'dashboard' }">
+      <router-link :to="{ name: 'dashboard' }" class="hidden md:flex">
         <PrimeButton text plain class="" :label="$t('labels.dashboard')" />
       </router-link>
 
-      <router-link :to="`#?cc={ name: 'cc.index' }`">
+      <router-link :to="{ name: 'cc.index' }" class="hidden md:flex">
         <PrimeButton text plain class="" :label="$t('labels.creditCard', 2)" />
       </router-link>
 
-      <router-link :to="`#?cc={ name: 'cheque.index' }`">
+      <router-link :to="`#?cc={ name: 'cheque.index' }`" class="hidden md:flex">
         <PrimeButton text plain class="" :label="$t('labels.cheque', 2)" />
       </router-link>
 
-      <router-link class="ml-2" :to="`#?cc={ name: 'transactions.index' }`">
+      <router-link class="ml-2 hidden md:flex" :to="`#?cc={ name: 'transactions.index' }`">
         <PrimeButton text plain class="" :label="$t('labels.transaction', 2)" />
       </router-link>
     </template>

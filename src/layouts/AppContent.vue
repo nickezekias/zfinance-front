@@ -14,8 +14,15 @@ const home = ref({
 
 <template>
   <div class="w-full">
-    <slot name="header"></slot>
-    <PrimeBreadcrumb :home="home" :model="props.breadcrumbItems" class="p-0 m-0 text-sm" />
+    <div class="flex">
+      <div>
+        <slot name="header-title"></slot>
+        <PrimeBreadcrumb :home="home" :model="props.breadcrumbItems" class="p-0 m-0 text-sm" />
+      </div>
+      <div class="flex items-center ml-auto">
+        <slot name="header-end" class="h-fit"></slot>
+      </div>
+    </div>
     <slot></slot>
   </div>
 </template>

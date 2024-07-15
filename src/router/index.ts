@@ -42,6 +42,12 @@ const router = createRouter({
           name: 'dashboard',
           meta: { middleware: [auth] },
           component: () => import('@/app/features/dashboard/presentation/IndexView.vue')
+        },
+        {
+          path: '/credit-cards',
+          name: 'cc.index',
+          meta: { middleware: [auth] },
+          component: () => import('@/app/features/credit-card/presentation/IndexView.vue')
         }
       ]
     }

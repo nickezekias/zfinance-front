@@ -2,8 +2,10 @@
 const model = defineModel()
 const props = defineProps<{
   id: string
+  disabled?: boolean
   errorHelpLabel: string
   label: string
+  readonly?: boolean
   type: string
   isError: boolean
 }>()
@@ -14,8 +16,10 @@ const props = defineProps<{
     <PrimeInputText
       v-model="model"
       class="w-full p-3 border shadow-none"
+      :disabled="props.disabled"
       :invalid="props.isError"
       :id="props.id"
+      :readonly="props.readonly"
       :type="type"
     />
     <label :class="props.isError ? 'nikk-invalid' : ''" :for="props.id">{{ $t(`${props.label}`) }}</label>
