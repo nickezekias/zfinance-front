@@ -6,7 +6,7 @@ import PrimeToolbar from 'primevue/toolbar'
 <template>
   <PrimeToolbar class="app-toolbar shadow-none border rounded-none">
     <template #start>
-      <span class="text-3xl text-black font-black">FinApp</span>
+      <span class="text-3xl text-black dark:text-white font-black">FinApp</span>
     </template>
 
     <template #center>

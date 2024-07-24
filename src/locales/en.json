@@ -11,6 +11,8 @@
   },
   "labels": {
     "accountNumber": "Account Number",
+    "addCard": "Add Card",
+    "cancel": "Cancel",
     "cardHolder": "Card Holder",
     "cardInformation": "Card Information",
     "cardNumber": "Card Number",
@@ -29,6 +31,8 @@
     "login": "Sign In",
     "loginFailed": "Failed to sign in",
     "newCard": "New Card",
+    "operationFailure": "Operation Failure",
+    "operationSuccess": "Operation Success",
     "password": "Password",
     "phone": "Phone number",
     "recharge": "Recharge",
@@ -39,6 +43,9 @@
     "transferMoney": "Transfer Money"
   },
   "features": {
+    "cc": {
+      "createSuccessDesc": "Credit card added successfully"
+    },
     "forgotPassword": {
       "checkAccountExistsMessage": "If an account with this email is found, you will receive a link on your email to reset your password.",
       "pageDescription": "It happens to the best of us, get a password reset link"

@@ -1,31 +1,82 @@
 <script setup lang="ts">
 import { computed, reactive, ref } from 'vue';
+import { getApiErrors } from '@/app/utils/helpers';
 import { required } from '@vuelidate/validators';
+import { useCreditCardStore } from '@/stores/credit-card.store';
+import { useI18n } from 'vue-i18n';
+import { useToast } from 'primevue/usetoast';
 import useVuelidate from '@vuelidate/core';
 
+import type { AxiosError } from 'axios';
+
 import NikkInputText from '@/components/forms/NikkInputText.vue'
+import { useRouter } from 'vue-router';
+import type { CreditCardCreateRequest } from '@/@types/credit-card.interface';
 
 const state = reactive({
   accountNumber: '039239032',
-  cardHolder: '',
-  cardNumber: '',
   cvc: '',
-  expiryDate: ''
+  expiryDate: '',
+  holder: '',
+  issuer: 'UBA',
+  network: 'Visa',
+  number: '392838239238',
+  type: 'Prepaid'
 })
+defineEmits(['close'])
 const loading = ref(false)
+const objStore = useCreditCardStore()
 const props = defineProps<{
   readonly?: boolean
 }>()
+const router = useRouter()
 const rules = computed(() => ({
   accountNumber: { required },
-  cardHolder: { required },
-  cardNumber: { required },
   cvc: { required },
-  expiryDate: { required }
+  expiryDate: { required },
+  holder: { required },
+  issuer: { required },
+  network: { required },
+  number: { required },
+  type: { required }
 }))
+const { t } = useI18n()
+const toast = useToast()
 const v$ = useVuelidate(rules, state, { $autoDirty: true });
 
-async function submit(){}
+async function submit(){
+  loading.value = true
+  try {
+    const isFormCorrect = await v$.value.$validate();
+    console.log("FORM_STATE", state)
+    if (isFormCorrect) {
+      await objStore.create(state);
+      toast.add({
+        severity: "success",
+        summary: t('labels.operationSuccess'),
+        detail: t('features.cc.createSuccessDesc'),
+        life: 5000
+      })
+      router.push({ name: 'dashboard' })
+    } else {
+      toast.add({
+        severity: "error",
+        summary: t('labels.invalidForm'),
+        detail: t('labels.invalidFormHint'),
+        life: 10000,
+      });
+    }
+  } catch (e) {
+    toast.add({
+      severity: "error", 
+      summary: t('labels.operationFailure'),
+      detail: getApiErrors(e as AxiosError),
+      life: 10000,
+    });
+  } finally {
+    loading.value = false
+  }
+}
 </script>
 
 <template>
@@ -42,20 +93,20 @@ async function submit(){}
       />
 
       <NikkInputText
-        v-model="state.cardHolder"
+        v-model="state.holder"
         errorHelpLabel="errors.validation.requiredField"
         id="card-holder"
-        :isError="v$.cardHolder.$error"
+        :isError="v$.holder.$error"
         label="labels.cardHolder"
         :disabled="props.readonly"
         type="text"
       />
 
       <NikkInputText
-        v-model="state.cardNumber"
+        v-model="state.number"
         errorHelpLabel="errors.validation.requiredField"
         id="card-number"
-        :isError="v$.cardNumber.$error"
+        :isError="v$.number.$error"
         label="labels.cardNumber"
         :disabled="props.readonly"
         type="text"
@@ -78,13 +129,13 @@ async function submit(){}
         :isError="v$.expiryDate.$error"
         label="labels.expiryDate"
         :disabled="props.readonly"
-        type="text"
+        type="date"
       />
     </div>
 
-    <div class="flex justify-end mt-8">
-      <PrimeButton text class="text-primary" :label="$t('labels.transferMoney')"/>
-      <PrimeButton text class="ml-3" :label="$t('labels.recharge')"/>
+    <div v-if="!props.readonly" class="flex justify-end mt-8">
+      <PrimeButton @click="$emit('close')" text :label="$t('labels.cancel')"/>
+      <PrimeButton type="submit" :loading="loading" class="ml-3" :label="$t('labels.addCard')"/>
     </div>
   </form>
 </template>
