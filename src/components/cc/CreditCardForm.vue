@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, reactive, ref } from 'vue';
+import { computed, onMounted, reactive, ref } from 'vue';
 import { getApiErrors } from '@/app/utils/helpers';
 import { required } from '@vuelidate/validators';
 import { useCreditCardStore } from '@/stores/credit-card.store';
@@ -12,8 +12,9 @@ import type { AxiosError } from 'axios';
 import NikkInputText from '@/components/forms/NikkInputText.vue'
 import { useRouter } from 'vue-router';
 import type { CreditCardCreateRequest } from '@/@types/credit-card.interface';
+import type CreditCard from '@/app/domain/credit-card.model';
 
-const state = reactive({
+const state: CreditCardCreateRequest = reactive({
   accountNumber: '039239032',
   cvc: '',
   expiryDate: '',
@@ -27,6 +28,7 @@ defineEmits(['close'])
 const loading = ref(false)
 const objStore = useCreditCardStore()
 const props = defineProps<{
+  data?: CreditCard | null,
   readonly?: boolean
 }>()
 const router = useRouter()
@@ -43,6 +45,22 @@ const rules = computed(() => ({
 const { t } = useI18n()
 const toast = useToast()
 const v$ = useVuelidate(rules, state, { $autoDirty: true });
+
+onMounted(() => {
+  fillForm()
+})
+
+function fillForm() {
+  if (props.data) {
+    state.accountNumber = props.data.accountNumber
+    state.cvc = props.data.cvc
+    state.expiryDate = props.data.expiryDate
+    state.holder = props.data.holder
+    state.issuer = props.data.issuer
+    state.network = props.data.network
+    state.number = props.data.type
+  }
+}
 
 async function submit(){
   loading.value = true
