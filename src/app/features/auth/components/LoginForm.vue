@@ -47,12 +47,21 @@ async function submit(): Promise<void> {
       });
     }
   } catch (e) {
-    toast.add({
-      severity: "error",
-      summary: t('labels.loginFailed'),
-      detail: getApiErrors(e as AxiosError),
-      life: 10000,
-    });
+    if (e?.response?.status == 422) {
+      toast.add({
+        severity: "error",
+        summary: t('labels.loginFailed'),
+        detail: t('messages.credentialsNotFound'),
+        life: 10000,
+      });
+    } else {
+      toast.add({
+        severity: "error",
+        summary: t('labels.loginFailed'),
+        detail: getApiErrors(e as AxiosError),
+        life: 10000,
+      });
+    }
   } finally {
     loading.value = false
   }
@@ -62,13 +71,13 @@ async function submit(): Promise<void> {
 <template>
   <form @submit.prevent="submit">
     <div class="field mt-10">
-      <NikkInputText v-model="state.email" errorHelpLabel="errors.validation.email" id="email" :isError="v$.email.$error"
-        label="labels.email" type="email" />
+      <NikkInputText v-model="state.email" errorHelpLabel="errors.validation.email" id="email"
+        :isError="v$.email.$error" label="labels.email" type="email" />
     </div>
 
     <div class="field mt-8">
-      <NikkInputText v-model="state.password" errorHelpLabel="errors.validation.requiredField" id="password" :isError="v$.password.$error"
-        label="labels.password" type="password" />
+      <NikkInputText v-model="state.password" errorHelpLabel="errors.validation.requiredField" id="password"
+        :isError="v$.password.$error" label="labels.password" type="password" />
     </div>
     <div class="flex">
       <router-link class="ml-auto" :to="{ name: 'auth.forgotPassword' }">
