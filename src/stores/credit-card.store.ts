@@ -1,5 +1,5 @@
 import { ref } from 'vue'
-import type { CreditCardCreateRequest } from '@/@types/credit-card.interface'
+import type { CreditCardCreateRequest, CreditCardRequest } from '@/@types/credit-card.interface'
 import { defineStore } from 'pinia'
 import type Obj from '@/app/domain/credit-card.model'
 import objectService from '@/app/features/credit-card/adapters/credit-card.service'
@@ -7,9 +7,16 @@ import type { Ref } from 'vue'
 
 export const useCreditCardStore = defineStore('credit-card', () => {
   const creditCards: Ref<Array<Obj>> = ref([])
+  const creditCardRequests: Ref<Array<Record<string, unknown>>> = ref([])
 
   async function create(payload: CreditCardCreateRequest) {
     const response = await objectService.create(payload)
+    return response.data
+  }
+
+  async function createCardRequest(payload: CreditCardRequest) {
+    const response = await objectService.createCardRequest(payload)
+    console.log("CREATE_CC_REQ_RES", response.data)
     return response.data
   }
 
@@ -18,10 +25,20 @@ export const useCreditCardStore = defineStore('credit-card', () => {
     return response.data
   }
 
+  async function getCardRequest(id: string) {
+    const response = await objectService.getCardRequest(id)
+    return response.data
+  }
+
   async function getAllForUser() {
     const response = await objectService.getAllForUser()
     creditCards.value = response.data.data
   }
 
-  return { creditCards, create, get, getAllForUser }
+  async function getAllCardRequestsForUser() {
+    const response = await objectService.getAllCardRequestsForUser()
+    creditCardRequests.value = response.data.data
+  }
+
+  return { creditCards, creditCardRequests, create, createCardRequest, get, getCardRequest, getAllForUser, getAllCardRequestsForUser }
 })

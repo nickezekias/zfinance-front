@@ -17,6 +17,7 @@ import FloatLabel from 'primevue/floatlabel'
 import InputText from 'primevue/inputtext'
 import Message from 'primevue/message'
 import ToastService from 'primevue/toastservice'
+import Ripple from 'primevue/ripple'
 
 const app = createApp(App, {
   setup() {
@@ -49,5 +50,7 @@ app.component('PrimeButton', Button)
 app.component('PrimeFloatLabel', FloatLabel)
 app.component('PrimeInputText', InputText)
 app.component('PrimeMessage', Message)
+
+app.directive('ripple', Ripple)
 
 app.mount('#app')

@@ -41,12 +41,11 @@ export const useAuthStore = defineStore('auth', () => {
 
   async function getAuthenticatedUser() {
     const response = await authService.getAuthenticatedUser()
-    setAuthenticatedUser(response.data as User)
+    setAuthenticatedUser(response.data.data as User)
   }
 
   async function login(payload: LoginRequest) {
-    const response = await authService.login(payload)
-    console.log('LOGIN_RESPONSE', response)
+    authService.login(payload)
     await getAuthenticatedUser()
   }
 

@@ -9,4 +9,10 @@ interface CreditCardCreateRequest {
   type: string
 }
 
-export type { CreditCardCreateRequest }
+interface CreditCardRequest {
+  cardIssuer: string
+  cardNetwork: string
+  cardType: string
+}
+
+export type { CreditCardCreateRequest, CreditCardRequest }

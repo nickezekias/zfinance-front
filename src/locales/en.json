@@ -11,7 +11,14 @@
   },
   "features": {
     "cc": {
-      "createSuccessDesc": "Credit card added successfully"
+      "createCardRequestSuccessDesc": "We successfully received your request for a new credit card, it will be processed and you will be notified",
+      "createSuccessDesc": "Credit card added successfully",
+      "validationStatuses": {
+        "0": "PENDING",
+        "1": "INPROGRESS",
+        "2": "REJECTED",
+        "3": "APPROVED"
+      }
     },
     "forgotPassword": {
       "checkAccountExistsMessage": "If an account with this email is found, you will receive a link on your email to reset your password.",
@@ -31,37 +38,58 @@
   "labels": {
     "accountNumber": "Account Number",
     "addCard": "Add Card",
+    "adminDashboard": "Admin Dashboard",
+    "bank": "Bank",
+    "bankInfo": "Bank Info",
+    "birthDate": "Birth Date",
     "cancel": "Cancel",
     "cardHolder": "Card Holder",
     "cardInformation": "Card Information",
+    "cardIssuer": "Card Issuer",
+    "cardNetwork": "Card Network",
     "cardNumber": "Card Number",
+    "cardType": "Card Type",
     "cheque": "Cheque | Cheques",
+    "chooseImage": "Choose Image",
     "confirmPassword": "Confirm password",
     "creditCard": "Credit Card | Credit Cards",
+    "creditCardRequest": "Credit Card Request | Credit Card Requests",
     "cvc": "CVC",
     "dashboard": "Dashboard",
     "email": "Email",
     "expiryDate": "Expiry Date",
     "firstName": "First name",
     "forgotPassword": "Forgot password?",
+    "gender": "Gender",
     "invalidForm": "Invalid Form",
     "invalidFormHint": "Please fill out the form correctly",
     "lastName": "Last name",
     "login": "Sign In",
     "loginFailed": "Failed to sign in",
     "newCard": "New Card",
+    "occupation": "Occupation",
     "operationFailure": "Operation Failure",
     "operationSuccess": "Operation Success",
     "password": "Password",
+    "personalInfoReview": "Personal Info Review",
     "phone": "Phone number",
     "recharge": "Recharge",
     "register": "Sign Up",
     "registerFailed": "Failed to sign up",
+    "requestNewCard": "Request New Card",
     "resetPassword": "Reset password",
+    "selectGender": "Select your gender",
     "transaction": "Transaction | Transactions",
-    "transferMoney": "Transfer Money"
+    "transferMoney": "Transfer Money",
+    "validationStatus": "Validation Status"
   },
   "messages": {
-    "credentialsNotFound": "These credentials do not match our records"
+    "credentialsNotFound": "These credentials do not match our records",
+    "idDocumentRequired": "You need to upload a picture of your ID card to request a credit card",
+    "noCreditCardsFound": "No credit cards found",
+    "noDataFound": "No data found"
+  },
+  "placeholders": {
+    "fileUploader": "Click to choose, or drag and drop a file"
   }
 }

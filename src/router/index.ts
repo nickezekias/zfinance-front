@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import GuestLayout from '@/layouts/GuestLayout.vue'
 import middlewarePipeline from './middleware/middlewarePipeline';
 import guest from './middleware/guest.middleware';
+import admin from './middleware/admin.middleware';
 import auth from './middleware/auth.middleware';
 
 const router = createRouter({
@@ -48,6 +49,19 @@ const router = createRouter({
           name: 'cc.index',
           meta: { middleware: [auth] },
           component: () => import('@/app/features/credit-card/presentation/IndexView.vue')
+        }
+      ]
+    },
+    {
+      path: '/admin',
+      component: () => import('@/layouts/admin/AdminAppLayout.vue'),
+      meta: { middleware: [admin] },
+      children: [
+        {
+          path: 'dashboard',
+          name: 'admin.dashboard',
+          meta: { middleware: [admin] },
+          component: () => import('@/app/features/admin/dashboard/presentation/IndexView.vue')
         }
       ]
     }

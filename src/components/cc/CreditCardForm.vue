@@ -11,7 +11,7 @@ import type { AxiosError } from 'axios';
 
 import NikkInputText from '@/components/forms/NikkInputText.vue'
 import { useRouter } from 'vue-router';
-import type { CreditCardCreateRequest } from '@/@types/credit-card.interface';
+import type { CreditCardCreateRequest, CreditCardRequest } from '@/@types/credit-card.interface';
 import type CreditCard from '@/app/domain/credit-card.model';
 
 const state: CreditCardCreateRequest = reactive({
@@ -68,12 +68,17 @@ async function submit(){
     const isFormCorrect = await v$.value.$validate();
     console.log("FORM_STATE", state)
     if (isFormCorrect) {
-      await objStore.create(state);
+      const postData: CreditCardRequest = {
+        cardIssuer: state.issuer,
+        cardNetwork: state.network,
+        cardType: "prepaid"
+      }
+      await objStore.createCardRequest(postData);
       toast.add({
         severity: "success",
         summary: t('labels.operationSuccess'),
-        detail: t('features.cc.createSuccessDesc'),
-        life: 5000
+        detail: t('features.cc.createCardRequestSuccessDesc'),
+        life: -1
       })
       router.push({ name: 'dashboard' })
     } else {

@@ -16,8 +16,8 @@ axios.interceptors.response.use(
       error.response &&
       [401, 419].includes(error.response.status)
     ) {
-      const authStore = useAuthStore()
-      await authStore.logout()
+      /* const authStore = useAuthStore()
+      await authStore.logout() */
     }
     return Promise.reject(error);
   }
