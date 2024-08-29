@@ -15,14 +15,14 @@ import type { CreditCardCreateRequest, CreditCardRequest } from '@/@types/credit
 import type CreditCard from '@/app/domain/credit-card.model';
 
 const state: CreditCardCreateRequest = reactive({
-  accountNumber: '039239032',
+  accountNumber: '',
   cvc: '',
   expiryDate: '',
   holder: '',
-  issuer: 'UBA',
-  network: 'Visa',
-  number: '392838239238',
-  type: 'Prepaid'
+  issuer: '',
+  network: '',
+  number: '',
+  type: ''
 })
 defineEmits(['close'])
 const loading = ref(false)
@@ -58,7 +58,7 @@ function fillForm() {
     state.holder = props.data.holder
     state.issuer = props.data.issuer
     state.network = props.data.network
-    state.number = props.data.type
+    state.number = props.data.number
   }
 }
 
@@ -66,7 +66,6 @@ async function submit(){
   loading.value = true
   try {
     const isFormCorrect = await v$.value.$validate();
-    console.log("FORM_STATE", state)
     if (isFormCorrect) {
       const postData: CreditCardRequest = {
         cardIssuer: state.issuer,

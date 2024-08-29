@@ -9,7 +9,7 @@ import AppContent from '@/layouts/AppContent.vue'
 import CreditCardIndexContent from './cc/IndexContent.vue';
 import CreditCardIndexTabPanel from './cc/IndexTabPanel.vue';
 import CreditCardRequestIndexTabPanel from './cc-request/IndexTabPanel.vue';
-import CreateView from './CreateView.vue'
+import CreateCCRequestView from './CreateView.vue'
 
 import Tabs from 'primevue/tabs'
 import TabList from 'primevue/tablist'
@@ -30,6 +30,11 @@ onMounted(async () => {
   await objStore.getAllForUser()
   await objStore.getAllCardRequestsForUser()
 })
+
+async function closeCCReqCreateDialog() {
+  isCreateDialog.value = false
+  await objStore.getAllCardRequestsForUser()
+}
 </script>
 
 <template>
@@ -54,6 +59,6 @@ onMounted(async () => {
 
     <CreditCardIndexContent v-else />
 
-    <CreateView v-model="isCreateDialog" @close="isCreateDialog = false" />
+    <CreateCCRequestView v-model="isCreateDialog" @close="closeCCReqCreateDialog" />
   </AppContent>
 </template>

@@ -1,21 +1,16 @@
 <script setup lang="ts">
 import type CreditCard from '@/app/domain/credit-card.model';
-import { onMounted } from 'vue';
 
 const props = defineProps<{
   isActive?: boolean
   data: CreditCard
 }>()
-
-onMounted(() => {
-  console.log("DATA", props.data)
-})
 </script>
 
 <template>
   <div class="credit-card" :class="props.isActive ? 'active': ''">
     <span id="holder">{{ props.data.holder }}</span>
-    <span id="amount">4 600 000 F CFA</span>
+    <span id="amount">{{ props.data.amount }} F CFA</span>
     <div class="flex">
       <span class="inline-flex mr-auto">{{ props.data.number }}</span>
       <span class="mr-2" id="network">{{ props.data.network }}</span>

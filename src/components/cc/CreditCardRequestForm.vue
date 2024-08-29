@@ -13,7 +13,6 @@ import type { CreditCardRequest } from '@/@types/credit-card.interface';
 import gendersList from '@/assets/data/genders.json'
 
 import FileUploader from '@/components/FileUploader.vue'
-import PrimeSelect from 'primevue/select'
 import NikkDatePicker from '@/components/forms/NikkDatePicker.vue';
 import NikkInputText from '@/components/forms/NikkInputText.vue'
 import NikkSelect from '@/components/forms/NikkSelect.vue';
@@ -110,7 +109,6 @@ function fillData() {
     state.firstName = authStore.user.firstName
     state.lastName = authStore.user.lastName
     state.IDDocument = authStore.user?.IDDocument as string
-    // state.IDDocument = 'passport.jpg'
     state.phone = authStore.user.phone
   }
 }
@@ -187,19 +185,9 @@ async function submit() {
             <NikkInputText v-model="state.firstName" errorHelpLabel="errors.validation.requiredField" id="first-name"
               :isError="v$.firstName.$error" label="labels.firstName" type="text" />
 
-            <!-- <NikkInputText v-model="state.birthDate" errorHelpLabel="errors.validation.requiredField" id="birth-date"
-              :isError="v$.birthDate.$error" label="labels.birthDate" type="date" /> -->
-
             <NikkDatePicker v-model="state.birthDate" dateFormat="dd-mm-yy"
               errorHelpLabel="errors.validation.requiredField" id="birth-date" :isError="v$.birthDate.$error"
               label="labels.birthDate" />
-
-            <!-- <PrimeFloatLabel>
-              <PrimeDatePicker id="birth-date" v-model="state.birthDate" class="w-full" dateFormat="dd-mm-yy" />
-              <label for="birth-date">{{ $t('labels.birthDate') }}</label>
-            </PrimeFloatLabel> -->
-            <!-- <NikkInputText v-model="state.gender" errorHelpLabel="errors.validation.requiredField" id="gender"
-              :isError="v$.gender.$error" label="labels.gender" type="text" /> -->
 
             <NikkSelect v-model="state.gender" errorHelpLabel="errors.validation.requiredField" id="gender"
               :isError="v$.gender.$error" :options=gendersList :placeholder="$t('labels.selectGender')"

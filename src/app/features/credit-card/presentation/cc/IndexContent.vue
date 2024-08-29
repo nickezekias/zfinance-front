@@ -1,22 +1,16 @@
 <script setup lang="ts">
-import { onMounted } from 'vue';
+import { computed } from 'vue';
 import CreditCardComponent from '@/components/cc/CreditCardComponent.vue';
 import CreditCardForm from '@/components/cc/CreditCardForm.vue'
 import PrimeDivider from 'primevue/divider'
 import { useCreditCardStore } from '@/stores/credit-card.store';
-import { useI18n } from 'vue-i18n';
 
 import type CreditCard from '@/app/domain/credit-card.model';
+import type { Ref } from 'vue';
 
-const { t } = useI18n()
 const objStore = useCreditCardStore()
 
-let selectedCreditCard!: CreditCard
-
-onMounted(async () => {
-  // await objStore.getAllForUser()
-  selectedCreditCard = objStore.creditCards[0]
-})
+const selectedCreditCard: Ref<CreditCard> = computed(() => objStore.creditCards[0])
 </script>
 
 <template>

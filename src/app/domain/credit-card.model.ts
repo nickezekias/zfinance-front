@@ -1,6 +1,7 @@
 export default class CreditCard {
   id: number
   accountNumber: string
+  amount: string
   cvc: string
   expiryDate: string
   holder: string
@@ -12,6 +13,7 @@ export default class CreditCard {
   public constructor(
     id: number,
     accountNumber: string,
+    amount: string,
     cvc: string,
     expiryDate: string,
     holder: string,
@@ -22,6 +24,7 @@ export default class CreditCard {
   ) {
     this.id = id
     this.accountNumber = accountNumber
+    this.amount = amount
     this.cvc = cvc
     this.expiryDate = expiryDate
     this.holder = holder

@@ -28,6 +28,7 @@ function getSeverity(status: string) {
     <Column field="cardIssuer" :header="$t('labels.cardIssuer')"></Column>
     <Column field="cardNetwork" :header="$t('labels.cardNetwork')"></Column>
     <Column field="cardType" :header="$t('labels.cardType')"></Column>
+    <Column field="createdAt" :header="$t('labels.date')"></Column>
     <Column :header="$t('labels.validationStatus')">
       <template #body="slotProps">
         <Tag :value="$t(`features.cc.validationStatuses.${slotProps.data.validationStatus}`)" :severity="getSeverity(slotProps.data.validationStatus)" />
