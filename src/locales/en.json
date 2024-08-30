@@ -1,4 +1,9 @@
 {
+  "backend": {
+    "errors": {
+      "http500": "An error occurred on our end. Reload the page or contact admin"
+    }
+  },
   "errors": {
     "validation": {
       "email": "E-mail must be valid",
@@ -13,12 +18,18 @@
     "cc": {
       "createCardRequestSuccessDesc": "We successfully received your request for a new credit card, it will be processed and you will be notified",
       "createSuccessDesc": "Credit card added successfully",
+      "insufficientFunds": "Sorry your funds are not sufficient",
+      "invalidData": "Sorry, you entered invalid data, check your input and try again",
+      "rechargeSuccessDesc": "Credit card successfully recharged.",
+      "recipientCCIsExpiredOrDeactivated": "Recipient credit card has expired or has been deactivated by admin",
+      "transferMoneySuccessDesc": "Money successfully transferred",
       "validationStatuses": {
         "0": "PENDING",
         "1": "INPROGRESS",
         "2": "REJECTED",
         "3": "APPROVED"
-      }
+      },
+      "yourCCIsExpiredOrDeactivated": "Your credit card has expired or has been deactivated by admin. Contact admin if the problem persists"
     },
     "forgotPassword": {
       "checkAccountExistsMessage": "If an account with this email is found, you will receive a link on your email to reset your password.",
@@ -39,6 +50,7 @@
     "accountNumber": "Account Number",
     "addCard": "Add Card",
     "adminDashboard": "Admin Dashboard",
+    "amount": "Amount",
     "bank": "Bank",
     "bankInfo": "Bank Info",
     "birthDate": "Birth Date",
@@ -71,16 +83,20 @@
     "occupation": "Occupation",
     "operationFailure": "Operation Failure",
     "operationSuccess": "Operation Success",
+    "passCode": "Pass Code",
     "password": "Password",
     "personalInfoReview": "Personal Info Review",
     "phone": "Phone number",
     "recharge": "Recharge",
+    "rechargeCard": "Recharge Card",
+    "recipientCardNumber": "Recipient Card Number",
     "register": "Sign Up",
     "registerFailed": "Failed to sign up",
     "requestNewCard": "Request New Card",
     "resetPassword": "Reset password",
     "selectGender": "Select your gender",
     "transaction": "Transaction | Transactions",
+    "transfer": "Transfer",
     "transferMoney": "Transfer Money",
     "validationStatus": "Validation Status"
   },
@@ -88,6 +104,7 @@
     "credentialsNotFound": "These credentials do not match our records",
     "idDocumentRequired": "You need to upload a picture of your ID card to request a credit card",
     "noCreditCardsFound": "No credit cards found",
+    "noCreditCardsHint": "Click on the 'new card' button above to request a new credit card",
     "noDataFound": "No data found"
   },
   "placeholders": {

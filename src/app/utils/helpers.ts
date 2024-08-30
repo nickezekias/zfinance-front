@@ -1,7 +1,7 @@
 import type { AxiosError } from 'axios'
 
 const getApiErrors = (error: AxiosError, title = '') => {
-  const errorMessage = 'backend.errors.apiErrorMessage'
+  const errorMessage = 'backend.errors.http500'
 
   if ('Fetch User' === error.name) {
     return errorMessage
@@ -20,6 +20,11 @@ const getApiErrors = (error: AxiosError, title = '') => {
   if (error.response.data && error.response.data.errors) {
     // @ts-expect-error nested laravel model resource objects data errors
     return error.response.data.errors
+  }
+
+  // show custom controller error messages for errors other than http 500
+  if (error.response.status != 500) {
+    return error.response.data
   }
 
   return errorMessage

@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import CreditCardComponent from '@/components/cc/CreditCardComponent.vue';
 import CreditCardForm from '@/components/cc/CreditCardForm.vue'
+import MoneyTransferDialog from '../components/MoneyTransferDialog.vue';
 import PrimeDivider from 'primevue/divider'
+import RechargeCardDialog from '../components/RechargeCardDialog.vue';
 import { useCreditCardStore } from '@/stores/credit-card.store';
 
 import type CreditCard from '@/app/domain/credit-card.model';
@@ -10,7 +12,26 @@ import type { Ref } from 'vue';
 
 const objStore = useCreditCardStore()
 
+const isMoneyTransferDialog = ref(false)
+const isRechargeDialog = ref(false)
+
 const selectedCreditCard: Ref<CreditCard> = computed(() => objStore.creditCards[0])
+
+function closeMoneyTransferDialog() {
+  isMoneyTransferDialog.value = false
+}
+
+function closeRechargeDialog() {
+  isRechargeDialog.value = false
+}
+
+function showMoneyTransferDialog() {
+  isMoneyTransferDialog.value = true
+}
+
+function showRechargeDialog() {
+  isRechargeDialog.value = true
+}
 </script>
 
 <template>
@@ -26,8 +47,8 @@ const selectedCreditCard: Ref<CreditCard> = computed(() => objStore.creditCards[
           <h3 class="text-xl font-thin text-gray-400 mt-4 md:mt-0">{{ $t('labels.cardInformation') }}</h3>
           <CreditCardForm :data="selectedCreditCard" :readonly="true" class="mt-8" />
           <div class="flex justify-end mt-8">
-            <PrimeButton text class="text-primary" :label="$t('labels.transferMoney')" />
-            <PrimeButton text class="ml-3" :label="$t('labels.recharge')" />
+            <PrimeButton @click="showMoneyTransferDialog" text class="text-primary" :label="$t('labels.transferMoney')" />
+            <PrimeButton @click="showRechargeDialog" text class="ml-3" :label="$t('labels.recharge')" />
           </div>
         </div>
       </div>
@@ -42,8 +63,10 @@ const selectedCreditCard: Ref<CreditCard> = computed(() => objStore.creditCards[
         </g>
       </svg>
       <p class="text-xl md:text-2xl text-gray-400">{{ $t('messages.noCreditCardsFound') }}</p>
-      <span class="text-center text-gray-400 mt-4">Click on the 'new card' button above to request a new credit card or
-        add existing one</span>
+      <span class="text-center text-gray-400 mt-4">{{ $t('messages.noCreditCardsHint') }}</span>
     </div>
+
+    <MoneyTransferDialog v-model="isMoneyTransferDialog" @close="closeMoneyTransferDialog" class="w-full md:w-1/3" />
+    <RechargeCardDialog v-model="isRechargeDialog" @close="closeRechargeDialog" class="w-full md:w-1/3" />
   </div>
 </template>

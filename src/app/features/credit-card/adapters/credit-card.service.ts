@@ -28,4 +28,12 @@ const getAllCardRequestsForUser = async function () {
   return axios.get(`${requestUrl}`)
 }
 
-export default { create, createCardRequest, get, getCardRequest, getAllForUser, getAllCardRequestsForUser }
+const rechargeCard = async function(payload: Record<string, unknown>) {
+  return axios.post(`${url}/recharge`, payload)
+}
+
+const transferMoney = async function(payload: Record<string, unknown>) {
+  return axios.post(`${url}/transfer-money`, payload)
+}
+
+export default { create, createCardRequest, get, getCardRequest, getAllForUser, getAllCardRequestsForUser, rechargeCard, transferMoney }
