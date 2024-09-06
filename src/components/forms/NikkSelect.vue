@@ -4,14 +4,14 @@ import PrimeSelect from 'primevue/select'
 const model = defineModel()
 const props = defineProps<{
   disable?: boolean
-  errorHelpLabel: string
+  errorHelpLabel?: string
   id: string
-  isError: boolean
+  isError?: boolean
   loading?: boolean
   optionLabel?: string
   optionValue?: string
   options: Array<unknown>
-  placeholder: string
+  placeholder?: string
   readonly?: boolean
 }>()
 </script>

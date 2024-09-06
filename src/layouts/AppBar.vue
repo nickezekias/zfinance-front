@@ -22,7 +22,7 @@ import PrimeToolbar from 'primevue/toolbar'
         <PrimeButton text plain class="" :label="$t('labels.cheque', 2)" />
       </router-link>
 
-      <router-link class="ml-2 hidden md:flex" :to="`#?cc={ name: 'transactions.index' }`">
+      <router-link class="ml-2 hidden md:flex" :to="{ name: 'transactions.index' }">
         <PrimeButton text plain class="" :label="$t('labels.transaction', 2)" />
       </router-link>
     </template>

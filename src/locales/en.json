@@ -29,6 +29,7 @@
         "2": "REJECTED",
         "3": "APPROVED"
       },
+
       "yourCCIsExpiredOrDeactivated": "Your credit card has expired or has been deactivated by admin. Contact admin if the problem persists"
     },
     "forgotPassword": {
@@ -44,6 +45,13 @@
       "pageDescription": "Sign up to manage your credit cards",
       "success": "Signed up successfully",
       "successDetail": "You are now being redirected to your dashboard"
+    },
+    "transaction": {
+      "statuses": {
+        "0": "INPROGRESS",
+        "1": "COMPLETED",
+        "2": "CANCELED"
+      }
     }
   },
   "labels": {
@@ -53,6 +61,7 @@
     "amount": "Amount",
     "bank": "Bank",
     "bankInfo": "Bank Info",
+    "beneficiary": "Beneficiary",
     "birthDate": "Birth Date",
     "cancel": "Cancel",
     "cardHolder": "Card Holder",
@@ -60,6 +69,7 @@
     "cardIssuer": "Card Issuer",
     "cardNetwork": "Card Network",
     "cardNumber": "Card Number",
+    "cardRecharge": "Card Recharge",
     "cardType": "Card Type",
     "cheque": "Cheque | Cheques",
     "chooseImage": "Choose Image",
@@ -69,6 +79,7 @@
     "cvc": "CVC",
     "dashboard": "Dashboard",
     "date": "Date",
+    "description": "Description",
     "email": "Email",
     "expiryDate": "Expiry Date",
     "firstName": "First name",
@@ -79,6 +90,8 @@
     "lastName": "Last name",
     "login": "Sign In",
     "loginFailed": "Failed to sign in",
+    "moneyTransfer": "Money Transfer",
+    "month": "Month | Months",
     "newCard": "New Card",
     "occupation": "Occupation",
     "operationFailure": "Operation Failure",
@@ -95,10 +108,13 @@
     "requestNewCard": "Request New Card",
     "resetPassword": "Reset password",
     "selectGender": "Select your gender",
+    "status": "Status",
     "transaction": "Transaction | Transactions",
     "transfer": "Transfer",
     "transferMoney": "Transfer Money",
-    "validationStatus": "Validation Status"
+    "type": "Type",
+    "validationStatus": "Validation Status",
+    "year": "Year | Years"
   },
   "messages": {
     "credentialsNotFound": "These credentials do not match our records",

@@ -49,6 +49,12 @@ const router = createRouter({
           name: 'cc.index',
           meta: { middleware: [auth] },
           component: () => import('@/app/features/credit-card/presentation/IndexView.vue')
+        },
+        {
+          path: '/transactions',
+          name: 'transactions.index',
+          meta: { middleware: [auth] },
+          component: () => import('@/app/features/transaction/presentation/IndexView.vue')
         }
       ]
     },
