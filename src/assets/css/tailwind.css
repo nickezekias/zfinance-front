@@ -731,6 +731,10 @@ video {
     height: 100vh;
   }
 
+  .max-h-screen{
+    max-height: 100vh;
+  }
+
   .min-h-fit{
     min-height: -moz-fit-content;
     min-height: fit-content;
@@ -815,6 +819,10 @@ video {
 
   .gap-y-10{
     row-gap: 2.5rem;
+  }
+
+  .overflow-hidden{
+    overflow: hidden;
   }
 
   .overflow-y-auto{

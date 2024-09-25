@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import PrimeAvatar from 'primevue/avatar'
 import PrimeToolbar from 'primevue/toolbar'
+import UserAvatarMenu from '@/components/user/UserAvatarMenu.vue';
 </script>
 
 <template>
@@ -32,8 +33,9 @@ import PrimeToolbar from 'primevue/toolbar'
     <template #end>
       <div class="flex align-items-center gap-3">
         <PrimeAvatar class="p-overlay-badge border rounded-full bg-transparent" icon="pi pi-bell" />
-        <PrimeAvatar image="https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png"
-          style="width: 32px; height: 32px" />
+        <!-- <PrimeAvatar image="https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png"
+          style="width: 32px; height: 32px" /> -->
+        <UserAvatarMenu />
       </div>
     </template>
   </PrimeToolbar>

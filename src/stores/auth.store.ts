@@ -8,6 +8,7 @@ import { useRouter } from 'vue-router'
 
 export const useAuthStore = defineStore('auth', () => {
   const user: Ref<User | null> = ref(null)
+  const router = useRouter()
 
   const clearAuthenticatedUser = (): void => {
     setUser(null)
@@ -50,7 +51,6 @@ export const useAuthStore = defineStore('auth', () => {
   }
 
   async function logout() {
-    const router = useRouter()
     await authService.logout()
     clearAuthenticatedUser()
     if (router.currentRoute.value.name != 'auth.login') {
