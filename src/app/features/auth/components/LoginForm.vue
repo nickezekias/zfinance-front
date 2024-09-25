@@ -93,7 +93,7 @@ async function submit(): Promise<void> {
     <div class="actions mt-8">
       <PrimeButton type="submit" :loading="loading" class="w-full p-3 bg-primary text-white"
         :label="$t('labels.login')" />
-      <router-link class="ml-auto" :to="{ name: 'auth.register' }">
+      <router-link :to="{ name: 'auth.register' }">
         <PrimeButton text plain class="w-full p-3 text-primary mt-3" :label="$t('features.login.createNewAccount')" />
       </router-link>
     </div>

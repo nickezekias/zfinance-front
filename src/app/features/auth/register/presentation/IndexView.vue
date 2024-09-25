@@ -4,14 +4,14 @@ import RegisterForm from '@/app/features/auth/components/RegisterForm.vue'
 
 <template>
   <div class="flex flex-row h-screen">
-    <section id="artwork" class="basis-full md:basis-1/2">
+    <section id="artwork" class="basis-full md:basis-1/2 hidden md:flex">
       <div id="artwork-overlay"></div>
     </section>
 
-    <section class="basis-full md:basis-1/2 md:p-24 overflow-y-auto">
-      <h1 class="text-right text-3xl md:text-5xl font-black">FINAPP</h1>
+    <section class="basis-full md:basis-1/2 p-8 md:p-24 overflow-y-auto">
+      <h1 class="text-center md:text-right text-3xl md:text-5xl font-black">FINAPP</h1>
 
-      <div class="mt-24 font-thin">
+      <div class="mt-16 md:mt-24 font-thin">
         <h2 class="text-2xl md:text-4xl uppercase">{{ $t('labels.register') }}</h2>
         <p class="text-secondary">{{ $t('features.register.pageDescription') }}</p>
 
