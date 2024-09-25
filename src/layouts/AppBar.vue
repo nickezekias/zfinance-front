@@ -31,7 +31,7 @@ import PrimeToolbar from 'primevue/toolbar'
 
     <template #end>
       <div class="flex align-items-center gap-3">
-        <PrimeAvatar class="p-overlay-badge border rounded-full bg-white" icon="pi pi-bell" />
+        <PrimeAvatar class="p-overlay-badge border rounded-full bg-transparent" icon="pi pi-bell" />
         <PrimeAvatar image="https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png"
           style="width: 32px; height: 32px" />
       </div>
