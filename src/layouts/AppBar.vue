@@ -4,7 +4,7 @@ import PrimeToolbar from 'primevue/toolbar'
 </script>
 
 <template>
-  <PrimeToolbar class="app-toolbar shadow-none border rounded-none p-0">
+  <PrimeToolbar class="app-toolbar shadow-none border rounded-none md:py-0">
     <template #start>
       <span class="text-3xl text-black dark:text-white font-black">FinApp</span>
     </template>
@@ -18,11 +18,11 @@ import PrimeToolbar from 'primevue/toolbar'
         <PrimeButton text plain class="" :label="$t('labels.creditCard', 2)" />
       </router-link>
 
-     <!--  <router-link :to="`/cheques/#?cc={ name: 'cheque.index' }`" activeClass="border-b border-primary" class="hidden md:flex py-2">
+      <!--  <router-link :to="`/cheques/#?cc={ name: 'cheque.index' }`" activeClass="border-b border-primary" class="hidden md:flex py-2">
         <PrimeButton text plain class="" :label="$t('labels.cheque', 2)" />
       </router-link> -->
 
-      <router-link activeClass="border-b border-primary" class="ml-2 hidden md:flex py-2" style="height: 100% !important"
+      <router-link activeClass="border-b border-primary" class="ml-2 hidden md:flex py-2"
         :to="{ name: 'transactions.index' }">
         <PrimeButton text plain class="" :label="$t('labels.transaction', 2)" />
       </router-link>
