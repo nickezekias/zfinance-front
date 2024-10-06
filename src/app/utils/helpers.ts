@@ -30,4 +30,9 @@ const getApiErrors = (error: AxiosError, title = '') => {
   return errorMessage
 }
 
-export { getApiErrors }
+function getImageSrc(url: string) {
+  const imgUrl = `${import.meta.env.VITE_API_BASE_URL}`;
+  return `${imgUrl}/${url}`
+}
+
+export { getApiErrors, getImageSrc }

@@ -13,7 +13,7 @@ const breadcrumbItems: Ref<Array<Record<string, string>>> = ref([{ label: t('lab
 
 <template>
   <AppContent :breadcrumbItems="breadcrumbItems">
-    <template #header>
+    <template #header-title>
       <span class="font-light text-xl md:text-2xl text-gray-600">{{ $t('labels.dashboard') }}</span>
     </template>
   </AppContent>

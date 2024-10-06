@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, reactive, ref } from 'vue'
 import { email, required } from "@vuelidate/validators";
-import { getApiErrors } from '@/app/utils/helpers';
+import { getApiErrors, getImageSrc } from '@/app/utils/helpers';
 import { useAuthStore } from '@/stores/auth.store';
 import { useCreditCardStore } from '@/stores/credit-card.store';
 import { useI18n } from 'vue-i18n';
@@ -105,10 +105,13 @@ function clearForm() {
 
 function fillData() {
   if (authStore.user) {
+    state.birthDate = authStore.user.birthDate.split('T')[0]
     state.email = authStore.user.email
     state.firstName = authStore.user.firstName
+    state.gender = authStore.user.gender
     state.lastName = authStore.user.lastName
     state.IDDocument = authStore.user?.IDDocument as string
+    state.occupation = authStore.user.occupation
     state.phone = authStore.user.phone
   }
 }
@@ -171,7 +174,7 @@ async function submit() {
       <div class="w-full md:w-96">
         <PrimeMessage class="mb-3" :severity="idMessageSeverity" icon="pi pi-info-circle">{{ $t('messages.idDocumentRequired') }}
         </PrimeMessage>
-        <FileUploader :extImage="authStore?.user?.IDDocument"
+        <FileUploader :extImageSrc="getImageSrc(`${authStore?.user?.IDDocument}`)"
           @file-selected="(event: File) => { state.IDDocument = event }" />
       </div>
 

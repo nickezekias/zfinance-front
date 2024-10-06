@@ -13,6 +13,7 @@ import router from './router'
 import i18n from './locales/i18n'
 
 import Button from 'primevue/button'
+import Card from 'primevue/card'
 import FloatLabel from 'primevue/floatlabel'
 import InputText from 'primevue/inputtext'
 import Message from 'primevue/message'
@@ -47,6 +48,7 @@ app.use(PrimeVue, {
 app.use(ToastService)
 
 app.component('PrimeButton', Button)
+app.component('PrimeCard', Card)
 app.component('PrimeFloatLabel', FloatLabel)
 app.component('PrimeInputText', InputText)
 app.component('PrimeMessage', Message)

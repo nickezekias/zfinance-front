@@ -4,14 +4,17 @@ import PrimeAvatar from 'primevue/avatar'
 import Menu from 'primevue/menu'
 import { useI18n } from 'vue-i18n';
 import { useAuthStore } from '@/stores/auth.store';
+import { useRouter } from 'vue-router';
 
 const { t } = useI18n()
 const authStore = useAuthStore()
+const router = useRouter()
 
 const items = ref([
   {
     label: t('labels.profile'),
-    icon: 'pi pi-user'
+    icon: 'pi pi-user',
+    command: () => { router.push({ name: 'profile.index' }) }
   },
   {
     label: t('labels.logout'),

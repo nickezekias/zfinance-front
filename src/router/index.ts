@@ -55,6 +55,12 @@ const router = createRouter({
           name: 'transactions.index',
           meta: { middleware: [auth] },
           component: () => import('@/app/features/transaction/presentation/IndexView.vue')
+        },
+        {
+          path: '/profile',
+          name: 'profile.index',
+          meta: { middleware: [auth] },
+          component: () => import('@/app/features/profile/presentation/IndexView.vue')
         }
       ]
     },

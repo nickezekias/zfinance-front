@@ -41,6 +41,10 @@
       "createNewAccount": "Don't have an account? Sign Up",
       "pageDescription": "Sign in to manage your credit cards"
     },
+    "profile": {
+      "generalInfoChangedSuccessDesc": "General info edited successful",
+      "generalSettings": "General Settings"
+    },
     "register": {
       "loginExistingAccount": "I already have an account",
       "pageDescription": "Sign up to manage your credit cards",
@@ -110,12 +114,14 @@
     "registerFailed": "Failed to sign up",
     "requestNewCard": "Request New Card",
     "resetPassword": "Reset password",
+    "save": "Save",
     "selectGender": "Select your gender",
     "status": "Status",
     "transaction": "Transaction | Transactions",
     "transfer": "Transfer",
     "transferMoney": "Transfer Money",
     "type": "Type",
+    "userProfile": "User Profile",
     "validationStatus": "Validation Status",
     "year": "Year | Years"
   },

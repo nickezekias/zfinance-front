@@ -10,6 +10,6 @@ import BottomBar from './mobile/BottomBar.vue';
     <PrimeToast />
     <AppBar />
     <BottomBar class="md:hidden"/>
-    <RouterView class="p-2 md:p-4"/>
+    <RouterView class="p-2 md:p-4 pb-32 md:pb-2"/>
   </div>
 </template>
