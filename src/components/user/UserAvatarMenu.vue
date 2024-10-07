@@ -39,7 +39,7 @@ async function logout() {
     <PrimeButton type="button" icon="pi pi-ellipsis-v" @click="toggle" aria-haspopup="true" aria-controls="overlay_menu"
       text rounded>
       <PrimeAvatar image="https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png"
-        style="width: 32px; height: 32px" />
+        style="width: 2.2rem; height: 2.2rem" />
 
       <Menu ref="menu" class="bg-white dark:bg-surface-950" id="overlay_menu" :model="items" :popup="true" />
     </PrimeButton>

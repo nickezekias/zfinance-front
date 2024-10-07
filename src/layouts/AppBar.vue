@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import PrimeAvatar from 'primevue/avatar'
 import PrimeToolbar from 'primevue/toolbar'
+import NotificationComponent from '@/components/notifications/NotificationComponent.vue';
 import UserAvatarMenu from '@/components/user/UserAvatarMenu.vue';
 </script>
 
@@ -32,9 +33,8 @@ import UserAvatarMenu from '@/components/user/UserAvatarMenu.vue';
 
     <template #end>
       <div class="flex align-items-center gap-3">
-        <PrimeAvatar class="p-overlay-badge border rounded-full bg-transparent" icon="pi pi-bell" />
-        <!-- <PrimeAvatar image="https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png"
-          style="width: 32px; height: 32px" /> -->
+        <!-- <PrimeAvatar class="p-overlay-badge border rounded-full bg-transparent" icon="pi pi-bell" /> -->
+        <NotificationComponent />
         <UserAvatarMenu />
       </div>
     </template>
