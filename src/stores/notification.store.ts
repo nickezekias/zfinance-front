@@ -9,7 +9,7 @@ export const useNotificationStore = defineStore('notificatino', () => {
 
   async function getAll() {
     const response = await objService.getAll()
-    notifications.value = response.data
+    notifications.value = response.data.data
   }
 
   return { getAll, notifications }

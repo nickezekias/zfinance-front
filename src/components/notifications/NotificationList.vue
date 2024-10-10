@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import { getApiErrors } from '@/app/utils/helpers';
-import { useNotificationStore } from '@/stores/notifcation.store';
+import { useNotificationStore } from '@/stores/notification.store';
 import { useI18n } from 'vue-i18n';
 import { useToast } from 'primevue/usetoast';
 
