@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const props = defineProps<{
-  data?: NotificationInterface
+  data: NotificationInterface
 }>()
 
 import type { NotificationInterface } from '@/@types/notification.interface';
@@ -11,7 +11,7 @@ import type { NotificationInterface } from '@/@types/notification.interface';
     <!-- <img
       src="https://avataaars.io/?avatarStyle=Circle&topType=LongHairStraight&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light"
       alt="Avatar" class="avatar"> -->
-    <div class="avatar">
+    <!-- <div class="avatar">
       <slot name="item-icon">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%"
           viewBox="0 0 264 280" version="1.1">
@@ -155,11 +155,11 @@ import type { NotificationInterface } from '@/@types/notification.interface';
           </g>
         </svg>
       </slot>
-    </div>
+    </div> -->
     <div class="notification-content">
-      <h3 class="notification-title">New Message Received</h3>
-      <p class="notification-description">You have received a new message from John Doe.</p>
-      <p class="notification-date">October 7, 2024</p>
+      <h3 class="notification-title">{{ $t(`${props.data.data.title}`) }}</h3>
+      <p class="notification-description">{{ $t(`${props.data.data.description}`) }}</p>
+      <p class="notification-date">{{ props.data.createdAt }}</p>
     </div>
     <button class="ellipsis-button">...</button>
   </li>
@@ -180,6 +180,7 @@ import type { NotificationInterface } from '@/@types/notification.interface';
   transition: background-color 0.3s;
   /* background-color: white; */
   /* Keep background color white for contrast */
+  overflow: hidden
 }
 
 .notification-item:hover {
@@ -212,6 +213,9 @@ import type { NotificationInterface } from '@/@types/notification.interface';
   font-size: 0.9rem;
   /* Reduced size from 16px to 14px */
   font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .notification-description {

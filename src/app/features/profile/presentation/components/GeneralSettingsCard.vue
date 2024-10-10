@@ -21,6 +21,10 @@ const objStore = useProfileStore()
 const { t } = useI18n()
 const toast = useToast()
 
+const idImageSrc = computed(() => {
+  return authStore.user?.IDDocument
+})
+
 const loading = ref(false)
 const formData = computed(() => {
   const formData = new FormData()
@@ -66,7 +70,7 @@ onMounted(() => {
 function fillData() {
   if (authStore.user) {
     // state.avatar = authStore.user.avatar
-    state.birthDate = authStore.user.birthDate.split('T')[0]
+    state.birthDate = authStore.user.birthDate?.split('T')[0]
     state.email = authStore.user.email
     state.firstName = authStore.user.firstName
     state.gender = authStore.user.gender
@@ -84,8 +88,9 @@ async function submit() {
     if (isFormCorrect) {
       const birthDate = new Date(`${formData.value.get('birthDate')}`).toISOString().split('T')[0]
       formData.value.set('birthDate', birthDate)
-      const resp = await objStore.updateProfileInfo(formData.value)
-      console.log(resp)
+      await objStore.updateProfileInfo(formData.value)
+      // Refresh auth user data in store
+      await authStore.getAuthenticatedUser()
       toast.add({
         severity: "success",
         summary: t('labels.operationSuccess'),
@@ -142,10 +147,13 @@ async function submit() {
         <NikkInputText v-model="state.phone" errorHelpLabel="errors.validation.requiredField" id="phone"
           :isError="v$.phone.$error" label="labels.phone" type="tel" />
 
+        <NikkInputText v-model="state.occupation" errorHelpLabel="errors.validation.requiredField" id="occupation"
+          :isError="v$.occupation.$error" label="labels.occupation" type="text" />
+
         <PrimeMessage class="mb-3" severity="warn" icon="pi pi-info-circle">{{
           $t('messages.idDocumentRequired') }}
         </PrimeMessage>
-        <FileUploader :extImageSrc="getImageSrc(`${authStore?.user?.IDDocument}`)"
+        <FileUploader :extImageSrc="getImageSrc(`${idImageSrc}`)"
           @file-selected="(event: File) => { state.IDDocument = event }" />
 
         <div class="flex mt-4">

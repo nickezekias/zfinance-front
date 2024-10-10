@@ -16,10 +16,14 @@
   },
   "features": {
     "cc": {
+      "cardRechargeRequestDescription": "Your request for a card recharge is being treated",
+      "creditCardPurchaseRequest": "Credit card purchase request",
+      "creditCardPurchaseRequestDescription": "Your credit card purchase request is being treated",
       "createCardRequestSuccessDesc": "We successfully received your request for a new credit card, it will be processed and you will be notified",
       "createSuccessDesc": "Credit card added successfully",
       "insufficientFunds": "Sorry your funds are not sufficient",
       "invalidData": "Sorry, you entered invalid data, check your input and try again",
+      "moneyTransferRequestDescription": "Your request for money transfer is being treated",
       "rechargeSuccessDesc": "Credit card successfully recharged.",
       "recipientCCIsExpiredOrDeactivated": "Recipient credit card has expired or has been deactivated by admin",
       "transferMoneySuccessDesc": "Money successfully transferred",

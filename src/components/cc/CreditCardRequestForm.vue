@@ -53,6 +53,10 @@ const formData = computed(() => {
 
 const idMessageSeverity = ref('warn')
 
+const idImageSrc = computed(() => {
+  return authStore.user?.IDDocument
+})
+
 const loading = ref(false)
 const objStore = useCreditCardStore()
 
@@ -105,7 +109,7 @@ function clearForm() {
 
 function fillData() {
   if (authStore.user) {
-    state.birthDate = authStore.user.birthDate.split('T')[0]
+    state.birthDate = authStore.user.birthDate?.split('T')[0]
     state.email = authStore.user.email
     state.firstName = authStore.user.firstName
     state.gender = authStore.user.gender
@@ -124,8 +128,8 @@ async function submit() {
       if (canRequestCreditCard()) {
         const birthDate = new Date(`${formData.value.get('birthDate')}`).toISOString().split('T')[0]
         formData.value.set('birthDate', birthDate)
-        const profileResp = await profileStore.updateProfileInfo(formData.value)
-        console.log(profileResp)
+        await profileStore.updateProfileInfo(formData.value)
+        await authStore.getAuthenticatedUser()
       }
       const postData: CreditCardRequest = {
         cardIssuer: state.issuer,
@@ -174,7 +178,7 @@ async function submit() {
       <div class="w-full md:w-96">
         <PrimeMessage class="mb-3" :severity="idMessageSeverity" icon="pi pi-info-circle">{{ $t('messages.idDocumentRequired') }}
         </PrimeMessage>
-        <FileUploader :extImageSrc="getImageSrc(`${authStore?.user?.IDDocument}`)"
+        <FileUploader :extImageSrc="getImageSrc(`${idImageSrc}`)"
           @file-selected="(event: File) => { state.IDDocument = event }" />
       </div>
 
