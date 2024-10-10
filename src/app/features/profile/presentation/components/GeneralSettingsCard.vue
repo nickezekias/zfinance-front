@@ -89,14 +89,14 @@ async function submit() {
       const birthDate = new Date(`${formData.value.get('birthDate')}`).toISOString().split('T')[0]
       formData.value.set('birthDate', birthDate)
       await objStore.updateProfileInfo(formData.value)
-      // Refresh auth user data in store
-      await authStore.getAuthenticatedUser()
       toast.add({
         severity: "success",
         summary: t('labels.operationSuccess'),
         detail: t('features.profile.generalInfoChangedSuccessDesc'),
-        life: -1
+        life: 4000
       })
+      // Refresh auth user data in store
+      await authStore.getAuthenticatedUser()
     } else {
       /* if (state.IDDocument == '') {
         alert('Something bout missing ID card')
