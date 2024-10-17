@@ -3,12 +3,14 @@ import { ref } from 'vue';
 import PrimeAvatar from 'primevue/avatar'
 import Menu from 'primevue/menu'
 import { useI18n } from 'vue-i18n';
-import { useAuthStore } from '@/stores/auth.store';
 import { useRouter } from 'vue-router';
 
-const { t } = useI18n()
-const authStore = useAuthStore()
+const props = defineProps<{
+  authStore: any
+}>()
 const router = useRouter()
+const { t } = useI18n()
+
 
 const items = ref([
   {
@@ -30,7 +32,7 @@ const toggle = (event: Event) => {
 };
 
 async function logout() {
-  await authStore.logout()
+  await props.authStore.logout()
 }
 </script>
 
