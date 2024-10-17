@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import PrimeAvatar from 'primevue/avatar'
 import PrimeToolbar from 'primevue/toolbar'
 import NotificationComponent from '@/components/notifications/NotificationComponent.vue';
 import UserAvatarMenu from '@/components/user/UserAvatarMenu.vue';
