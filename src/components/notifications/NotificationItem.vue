@@ -7,13 +7,13 @@ import type { NotificationInterface } from '@/@types/notification.interface';
 </script>
 
 <template>
-  <li class="notification-item">
+  <li class="notification-item" :class="props.data.readAt == null ? 'unread': ''">
     <!-- <img
       src="https://avataaars.io/?avatarStyle=Circle&topType=LongHairStraight&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light"
       alt="Avatar" class="avatar"> -->
-    <!-- <div class="avatar">
+    <div class="avatar">
       <slot name="item-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%"
+        <!-- <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%"
           viewBox="0 0 264 280" version="1.1">
           <desc>Created with getavataaars.com</desc>
           <defs>
@@ -153,21 +153,28 @@ import type { NotificationInterface } from '@/@types/notification.interface';
               </g>
             </g>
           </g>
-        </svg>
+        </svg> -->
+        💳
       </slot>
-    </div> -->
+    </div>
     <div class="notification-content">
       <h3 class="notification-title">{{ $t(`${props.data.data.title}`) }}</h3>
       <p class="notification-description">{{ $t(`${props.data.data.description}`) }}</p>
       <p class="notification-date">{{ props.data.createdAt }}</p>
     </div>
-    <button class="ellipsis-button">...</button>
+    <!-- <PrimeButton text icon="pi pi-ellipsis-v" :severity="props.data.readAt == null ? 'primary': 'secondary'" /> -->
+    <!-- <button class="ellipsis-button">...</button> -->
+     <div class="flex-col gap-0">
+       <PrimeButton text plan icon="pi pi-check" class="hidden-actions" />
+       <PrimeButton text plan icon="pi pi-trash" severity="danger" class="delete-action hidden-actions" />
+     </div>
   </li>
 </template>
 
 <style lang="css" scoped>
 .notification-item {
   display: flex;
+  position: relative;
   align-items: center;
   padding: 0.625rem;
   /* Reduced padding from 15px to 10px */
@@ -183,9 +190,22 @@ import type { NotificationInterface } from '@/@types/notification.interface';
   overflow: hidden
 }
 
+.notification-item.unread {
+  color: var(--p-primary-color);
+  border-color: var(--p-primary-color)
+}
+
 .notification-item:hover {
-  background-color: #f9f9f9;
+  background-color: #f9f9f963;
   /* Slightly darker background on hover */
+}
+
+.notification-item .hidden-actions {
+  display: none;
+}
+
+.notification-item:hover .hidden-actions {
+  display: flex;
 }
 
 .avatar {
@@ -237,20 +257,6 @@ import type { NotificationInterface } from '@/@types/notification.interface';
   color: #888;
 }
 
-.ellipsis-button {
-  background: none;
-  border: none;
-  font-size: 1rem;
-  /* Reduced size from 20px to 16px */
-  cursor: pointer;
-  color: #888;
-  transition: color 0.2s;
-}
-
-.ellipsis-button:hover {
-  color: #333;
-}
-
 @media (prefers-color-scheme: dark) {
   .notification-item {
     border: 1px solid #444;
@@ -260,7 +266,7 @@ import type { NotificationInterface } from '@/@types/notification.interface';
   }
 
   .notification-item:hover {
-    background-color: #333;
+    background-color: #333333;
     /* Dark mode hover */
   }
 

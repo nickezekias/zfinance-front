@@ -6,6 +6,7 @@ interface NotificationInterface {
     description: string
     title: string
   }
+  readAt: string
   updatedAt: string
 }
 
