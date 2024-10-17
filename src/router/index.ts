@@ -79,7 +79,7 @@ const router = createRouter({
           path: 'forgot-password',
           name: 'admin.auth.forgotPassword',
           meta: { middleware: [guest] },
-          component: () => import('@/app/features/admin/auth/login/presentation/IndexView.vue')
+          component: () => import('@/app/features/admin/auth/ForgotPasswordView.vue')
         },
         {
           path: 'dashboard',
