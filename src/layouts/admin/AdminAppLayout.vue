@@ -8,6 +8,6 @@ import AdminAppBar from './AdminAppBar.vue'
   <div class="main">
     <PrimeToast />
     <AdminAppBar />
-    <RouterView class="p-2 md:p-4"/>
+    <RouterView class="p-2 md:p-4 pb-32 md:pb-2"/>
   </div>
 </template>
