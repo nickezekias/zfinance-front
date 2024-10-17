@@ -66,8 +66,32 @@ const router = createRouter({
     },
     {
       path: '/admin',
+      component: () => import('@/layouts/GuestLayout.vue'),
+      // meta: { middleware: [admin] },
+      children: [
+        {
+          path: 'login',
+          name: 'admin.auth.login',
+          meta: { middleware: [guest] },
+          component: () => import('@/app/features/admin/auth/login/presentation/IndexView.vue')
+        },
+        {
+          path: 'forgot-password',
+          name: 'admin.auth.forgotPassword',
+          meta: { middleware: [guest] },
+          component: () => import('@/app/features/admin/auth/login/presentation/IndexView.vue')
+        },
+        {
+          path: 'dashboard',
+          name: 'admin.dashboard',
+          meta: { middleware: [admin] },
+          component: () => import('@/app/features/admin/dashboard/presentation/IndexView.vue')
+        }
+      ]
+    },
+    {
+      path: '/admin',
       component: () => import('@/layouts/admin/AdminAppLayout.vue'),
-      meta: { middleware: [admin] },
       children: [
         {
           path: 'dashboard',
