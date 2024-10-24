@@ -100,7 +100,13 @@ const router = createRouter({
           component: () => import('@/app/features/admin/profile/presentation/IndexView.vue')
         } */
       ]
-    }
+    },
+
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'notFound',
+      component: () => import('@/app/features/errors/presentation/NotFoundView.vue')
+    },
   ]
 })
 
