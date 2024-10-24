@@ -35,6 +35,11 @@ export const useCreditCardStore = defineStore('credit-card', () => {
     creditCards.value = response.data.data
   }
 
+  async function getAllCardRequests() {
+    const response = await objectService.getAllCardRequests()
+    creditCardRequests.value = response.data.data
+  }
+
   async function getAllCardRequestsForUser() {
     const response = await objectService.getAllCardRequestsForUser()
     creditCardRequests.value = response.data.data
@@ -48,5 +53,5 @@ export const useCreditCardStore = defineStore('credit-card', () => {
     return await objectService.transferMoney(payload)
   }
 
-  return { creditCards, creditCardRequests, create, createCardRequest, get, getCardRequest, getAllForUser, getAllCardRequestsForUser, rechargeCard, transferMoney }
+  return { creditCards, creditCardRequests, create, createCardRequest, get, getCardRequest, getAllForUser, getAllCardRequests, getAllCardRequestsForUser, rechargeCard, transferMoney }
 })

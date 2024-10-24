@@ -1,14 +1,14 @@
-import axios from "@/lib/axios";
-import type { CreditCardCreateRequest, CreditCardRequest } from "@/@types/credit-card.interface";
+import axios from '@/lib/axios'
+import type { CreditCardCreateRequest, CreditCardRequest } from '@/@types/credit-card.interface'
 
 const url = '/api/v1/credit-cards'
 const requestUrl = `${url}/requests`
 
-const create = async function(payload: CreditCardCreateRequest) {
+const create = async function (payload: CreditCardCreateRequest) {
   return axios.post(`${url}`, payload)
 }
 
-const createCardRequest = async function(payload: CreditCardRequest) {
+const createCardRequest = async function (payload: CreditCardRequest) {
   return axios.post(`${requestUrl}`, payload)
 }
 
@@ -24,16 +24,30 @@ const getAllForUser = async function () {
   return axios.get(`${url}`)
 }
 
-const getAllCardRequestsForUser = async function () {
+const getAllCardRequests = async function () {
   return axios.get(`${requestUrl}`)
 }
 
-const rechargeCard = async function(payload: Record<string, unknown>) {
+const getAllCardRequestsForUser = async function () {
+  return axios.get(`${requestUrl}/users/auth`)
+}
+
+const rechargeCard = async function (payload: Record<string, unknown>) {
   return axios.post(`${url}/recharge`, payload)
 }
 
-const transferMoney = async function(payload: Record<string, unknown>) {
+const transferMoney = async function (payload: Record<string, unknown>) {
   return axios.post(`${url}/transfer-money`, payload)
 }
 
-export default { create, createCardRequest, get, getCardRequest, getAllForUser, getAllCardRequestsForUser, rechargeCard, transferMoney }
+export default {
+  create,
+  createCardRequest,
+  get,
+  getCardRequest,
+  getAllForUser,
+  getAllCardRequests,
+  getAllCardRequestsForUser,
+  rechargeCard,
+  transferMoney
+}

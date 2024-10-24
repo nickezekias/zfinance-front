@@ -25,6 +25,7 @@ function getSeverity(status: string) {
 
 <template>
   <DataTable :value="objStore.creditCardRequests">
+    <Column field="user" :header="$t('labels.user')"></Column>
     <Column field="cardIssuer" :header="$t('labels.cardIssuer')"></Column>
     <Column field="cardNetwork" :header="$t('labels.cardNetwork')"></Column>
     <Column field="cardType" :header="$t('labels.cardType')"></Column>

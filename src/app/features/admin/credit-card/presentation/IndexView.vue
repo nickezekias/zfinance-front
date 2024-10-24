@@ -20,7 +20,7 @@ const breadcrumbItems: Ref<Array<Record<string, string>>> = ref([{ label: t('lab
 
 onMounted(async () => {
   // await objStore.getAllForUser()
-  await objStore.getAllCardRequestsForUser()
+  await objStore.getAllCardRequests()
 })
 </script>
 
