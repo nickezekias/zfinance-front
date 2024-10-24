@@ -1,25 +1,10 @@
-import { useAdminAuthStore } from "@/stores/admin.auth.store";
+import { useAuthStore } from "@/stores/auth.store";
 
-export default async function admin({ to, next }: any) {
-  const authStore = useAdminAuthStore()
-  const loginQuery = { path: '/admin/login', query: { redirect: to.fullPath } }
-  if (authStore.isGuest()) {
-    authStore.clearAuthenticatedUser()
-    next(loginQuery)
+export default function admin({ next }: any) {
+  const authStore = useAuthStore()
+  if (authStore.isAdmin()) {
+    next()
   } else {
-    if (authStore.user) {
-      next()
-    } else {
-      try {
-        await authStore.getAuthenticatedUser()
-      } catch(e) {
-        console.error(e)
-      }
-      if (authStore.user) {
-        next()
-      } else {
-        next(loginQuery)
-      }
-    }
+    next({ name: 'notFound' })
   }
 }

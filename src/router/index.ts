@@ -69,24 +69,6 @@ const router = createRouter({
       component: () => import('@/layouts/GuestLayout.vue'),
       // meta: { middleware: [admin] },
       children: [
-        {
-          path: 'login',
-          name: 'admin.auth.login',
-          meta: { middleware: [guest] },
-          component: () => import('@/app/features/admin/auth/login/presentation/IndexView.vue')
-        },
-        {
-          path: 'forgot-password',
-          name: 'admin.auth.forgotPassword',
-          meta: { middleware: [guest] },
-          component: () => import('@/app/features/admin/auth/ForgotPasswordView.vue')
-        },
-        {
-          path: 'dashboard',
-          name: 'admin.dashboard',
-          meta: { middleware: [admin] },
-          component: () => import('@/app/features/admin/dashboard/presentation/IndexView.vue')
-        }
       ]
     },
     {
@@ -96,13 +78,13 @@ const router = createRouter({
         {
           path: 'dashboard',
           name: 'admin.dashboard',
-          meta: { middleware: [admin] },
+          meta: { middleware: [auth, admin] },
           component: () => import('@/app/features/admin/dashboard/presentation/IndexView.vue')
         },
         {
           path: 'credit-cards',
           name: 'admin.cc.index',
-          meta: { middleware: [admin] },
+          meta: { middleware: [auth, admin] },
           component: () => import('@/app/features/admin/credit-card/presentation/IndexView.vue')
         },
         /* {
