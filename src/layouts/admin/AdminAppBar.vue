@@ -2,9 +2,6 @@
 import PrimeToolbar from 'primevue/toolbar'
 import NotificationComponent from '@/components/notifications/NotificationComponent.vue';
 import UserAvatarMenu from '@/components/user/UserAvatarMenu.vue';
-import { useAdminAuthStore } from '@/stores/admin.auth.store';
-
-const authStore = useAdminAuthStore()
 </script>
 
 <template>
@@ -27,7 +24,7 @@ const authStore = useAdminAuthStore()
     <template #end>
       <div class="flex align-items-center gap-3">
         <NotificationComponent />
-        <UserAvatarMenu :authStore="authStore" />
+        <UserAvatarMenu />
       </div>
     </template>
   </PrimeToolbar>
