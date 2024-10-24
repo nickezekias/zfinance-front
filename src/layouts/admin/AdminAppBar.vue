@@ -17,6 +17,10 @@ const authStore = useAdminAuthStore()
       <router-link :to="{ name: 'admin.dashboard' }" activeClass="border-b border-primary" class="hidden md:flex py-2">
         <PrimeButton text plain class="" :label="$t('labels.dashboard')" />
       </router-link>
+
+      <router-link :to="{ name: 'admin.cc.index' }" activeClass="border-b border-primary" class="hidden md:flex py-2">
+        <PrimeButton text plain class="" :label="$t('labels.creditCard', 2)" />
+      </router-link>
     </template>
 
 

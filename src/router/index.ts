@@ -98,7 +98,25 @@ const router = createRouter({
           name: 'admin.dashboard',
           meta: { middleware: [admin] },
           component: () => import('@/app/features/admin/dashboard/presentation/IndexView.vue')
-        }
+        },
+        {
+          path: 'credit-cards',
+          name: 'admin.cc.index',
+          meta: { middleware: [admin] },
+          component: () => import('@/app/features/admin/credit-card/presentation/IndexView.vue')
+        },
+        /* {
+          path: 'transactions',
+          name: 'admin.transactions.index',
+          meta: { middleware: [admin] },
+          component: () => import('@/app/features/admin/transaction/presentation/IndexView.vue')
+        },
+        {
+          path: 'profile',
+          name: 'admin.profile.index',
+          meta: { middleware: [admin] },
+          component: () => import('@/app/features/admin/profile/presentation/IndexView.vue')
+        } */
       ]
     }
   ]
